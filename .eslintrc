@@ -29,6 +29,7 @@
         "import/newline-after-import": "error",
         "import/no-duplicates": "error",
         "arrow-parens": ["error", "as-needed"],
+        "react/jsx-props-no-spreading": "off",
         "semi": "error",
         "prefer-destructuring": "off",
         "react/destructuring-assignment": "off",
@@ -79,7 +80,7 @@
                 "map": [
                     ["@", "./src"]
                 ],
-                "extensions": [".ts", ".tsx"]
+                "extensions": [".ts", ".js", ".tsx"]
             }
         }
     },
