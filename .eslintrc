@@ -1,6 +1,6 @@
 {
-    "parser": "babel-eslint",
-    "plugins": ["prettier", "simple-import-sort", "cypress"],
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["prettier", "simple-import-sort", "@typescript-eslint", "cypress"],
     "extends": ["airbnb", "airbnb/hooks", "prettier"],
     "env": {
         "node": true,
@@ -30,6 +30,7 @@
         "import/no-duplicates": "error",
         "arrow-parens": ["error", "as-needed"],
         "react/jsx-props-no-spreading": "off",
+        "no-use-before-define": "off",
         "semi": "error",
         "prefer-destructuring": "off",
         "react/destructuring-assignment": "off",
