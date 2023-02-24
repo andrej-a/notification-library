@@ -5,7 +5,10 @@ export const Wrapper = styled.div<{ params: Pick<IAlert, 'position' | 'color' | 
     position: absolute;
 
     width: auto;
+    min-width: 300px;
+    max-width: 600px;
     height: auto;
+    max-height: 130px;
     display: flex;
 
     border-radius: 40px;
@@ -67,26 +70,22 @@ export const IconWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 15px;
+    margin-right: 5px;
 `;
 export const ContentWrapper = styled.div`
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 5px;
 `;
 export const TitleWrapper = styled.div`
     width: auto;
+    height: auto;
     display: flex;
     justify-content: center;
-
-    color: #000;
 `;
 export const DescriptionWrapper = styled.div`
     display: flex;
     justify-content: center;
-
-    color: #000;
 `;

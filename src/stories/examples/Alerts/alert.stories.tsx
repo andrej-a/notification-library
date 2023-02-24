@@ -15,8 +15,8 @@ SuccessAlert.args = {
     position: 'top-left',
     type: 'success',
     duration: 5,
-    title: 'Success!',
-    description: 'Success alert!',
+    title: 'Success title!',
+    description: 'Success alert description!',
     indent: 'small',
     color: 'green',
 };
@@ -25,18 +25,18 @@ WarningAlert.args = {
     position: 'top-left',
     type: 'warning',
     duration: 5,
-    title: 'Warning!',
-    description: 'Warning alert!',
+    title: 'Warning title!',
+    description: 'Warning alert description!',
     indent: 'small',
-    color: 'yellow',
+    color: 'orange',
 };
 export const ErrorAlert = Template.bind({});
 ErrorAlert.args = {
     position: 'top-left',
     type: 'error',
     duration: 5,
-    title: 'Error!',
-    description: 'Error alert!',
+    title: 'Error title!',
+    description: 'Error alert description!',
     indent: 'small',
     color: 'red',
 };

@@ -9,9 +9,9 @@ export const Alert = ({ position, type, duration, title, description, indent, co
     return (
         <Wrapper params={{ position, indent, color }}>
             <IconWrapper>
-                {type === 'success' && <GrStatusGood style={{ width: '30px', height: '30px' }} />}
-                {type === 'warning' && <RiErrorWarningLine style={{ width: '30px', height: '30px' }} />}
-                {type === 'error' && <AiOutlineStop style={{ width: '30px', height: '30px' }} />}
+                {type === 'success' && <GrStatusGood style={{ width: '40px', height: '40px' }} />}
+                {type === 'warning' && <RiErrorWarningLine style={{ width: '40px', height: '40px' }} />}
+                {type === 'error' && <AiOutlineStop style={{ width: '40px', height: '40px' }} />}
             </IconWrapper>
             <ContentWrapper>
                 <TitleWrapper>
@@ -22,6 +22,7 @@ export const Alert = ({ position, type, duration, title, description, indent, co
         </Wrapper>
     );
 };
+
 Alert.defaultProps = {
     position: 'button-left',
     type: 'success',
