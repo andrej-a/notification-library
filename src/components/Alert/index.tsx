@@ -1,9 +1,11 @@
-import { IAlert } from '@/models/alert';
 import React from 'react';
-import { Wrapper, IconWrapper, TitleWrapper, DescriptionWrapper, ContentWrapper } from './styles';
 import { AiOutlineStop } from 'react-icons/ai';
-import { RiErrorWarningLine } from 'react-icons/ri';
 import { GrStatusGood } from 'react-icons/gr';
+import { RiErrorWarningLine } from 'react-icons/ri';
+
+import { IAlert } from '@/models/alert';
+
+import { ContentWrapper,DescriptionWrapper, IconWrapper, TitleWrapper, Wrapper } from './styles';
 
 export const Alert = ({ position, type, duration, title, description, indent, color }: IAlert) => {
     return (

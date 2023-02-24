@@ -1,7 +1,9 @@
-import { Alert } from '../../../components/Alert/index';
+import React from 'react';
+
 import { IAlert } from '@/models/alert';
 import { Story } from '@storybook/react';
-import React from 'react';
+
+import { Alert } from '../../../components/Alert/index';
 
 export default {
     title: 'Alert',

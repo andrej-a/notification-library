@@ -1,3 +1,7 @@
+type position = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+type alertType = 'success' | 'warning' | 'error';
+type indent = 'small' | 'medium' | 'big';
+
 export interface IAlert {
     position: position;
     type: alertType;
@@ -8,6 +12,4 @@ export interface IAlert {
     color: string;
 }
 
-type position = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
-type alertType = 'success' | 'warning' | 'error';
-type indent = 'small' | 'medium' | 'big';
+export type Params = Pick<IAlert, 'position' | 'color' | 'indent'>;

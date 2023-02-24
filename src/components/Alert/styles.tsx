@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
-import { IAlert } from '@/models/alert';
 
-export const Wrapper = styled.div<{ params: Pick<IAlert, 'position' | 'color' | 'indent'> }>`
+import { Params } from '@/models/alert';
+
+export const Wrapper = styled.div<{ params: Params }>`
     position: absolute;
 
     width: auto;
