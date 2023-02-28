@@ -3,7 +3,7 @@ import React from 'react';
 import { IAlert } from '@/models/alert';
 import { Story } from '@storybook/react';
 
-import { Alert } from '../../../components/Alert/index';
+import { Alert } from '../../components/Alert/index';
 
 export default {
     title: 'Alert',
@@ -14,9 +14,10 @@ const Template: Story<IAlert> = args => <Alert {...args} />;
 
 export const SuccessAlert = Template.bind({});
 SuccessAlert.args = {
+    isVisible: true,
     position: 'top-left',
     type: 'success',
-    duration: 5,
+    visibleTime: 5,
     title: 'Success title!',
     description: 'Success alert description!',
     indent: 'small',
@@ -24,9 +25,10 @@ SuccessAlert.args = {
 };
 export const WarningAlert = Template.bind({});
 WarningAlert.args = {
+    isVisible: true,
     position: 'top-left',
     type: 'warning',
-    duration: 5,
+    visibleTime: 5,
     title: 'Warning title!',
     description: 'Warning alert description!',
     indent: 'small',
@@ -34,9 +36,10 @@ WarningAlert.args = {
 };
 export const ErrorAlert = Template.bind({});
 ErrorAlert.args = {
+    isVisible: true,
     position: 'top-left',
     type: 'error',
-    duration: 5,
+    visibleTime: 5,
     title: 'Error title!',
     description: 'Error alert description!',
     indent: 'small',

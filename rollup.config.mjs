@@ -4,7 +4,6 @@ import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import { terser } from 'rollup-plugin-terser';
 import svgr from '@svgr/rollup';
-import url from 'url';
 
 export default [
     {
@@ -13,6 +12,7 @@ export default [
             {
                 file: 'dist/index.js',
                 format: 'cjs',
+                sourcemap: true,
             },
             {
                 file: 'dist/index.es.js',

@@ -12,9 +12,9 @@ export const Wrapper = styled.div<{ params: Params }>`
     max-height: 130px;
     display: flex;
 
-    border-radius: 40px;
     text-align: center;
     background-color: ${({ params: { color } }) => color};
+    margin: 5px;
 
     ${({ params: { indent } }) => {
         switch (indent) {
