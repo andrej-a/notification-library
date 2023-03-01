@@ -16,6 +16,8 @@ export const SuccessAlert = Template.bind({});
 SuccessAlert.args = {
     isVisible: true,
     position: 'top-left',
+    showAnimation: 'left-right',
+    hideAnimation: 'to-right',
     type: 'success',
     visibleTime: 5,
     title: 'Success title!',
@@ -27,6 +29,8 @@ export const WarningAlert = Template.bind({});
 WarningAlert.args = {
     isVisible: true,
     position: 'top-left',
+    showAnimation: 'left-right',
+    hideAnimation: 'to-right',
     type: 'warning',
     visibleTime: 5,
     title: 'Warning title!',
@@ -38,6 +42,8 @@ export const ErrorAlert = Template.bind({});
 ErrorAlert.args = {
     isVisible: true,
     position: 'top-left',
+    showAnimation: 'left-right',
+    hideAnimation: 'to-right',
     type: 'error',
     visibleTime: 5,
     title: 'Error title!',

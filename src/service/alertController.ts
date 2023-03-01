@@ -15,19 +15,14 @@ class AlertController {
         return AlertController.instance;
     };
 
-    /*   public setRef = (ref: React.MutableRefObject<JSX.Element>) => {
-        AlertController.componentRef = ref;
-        console.log(AlertController.componentRef.current, 'COMPONENTREF');
-        console.log(AlertController.componentRef.current.getComponent(), 'COMPONENT CLASS');
+    public removeAlert = (id: string) => {
+        this.setList(this.list.filter(alert => alert.id !== id));
     };
-
-    public getComponent = () => {
-        return AlertController.componentRef.current.getComponent();
-    }; */
 
     public transferSettingsToComponent = (list: IAlert[], setList: React.Dispatch<React.SetStateAction<IAlert[]>>) => {
         this.list = list;
         this.setList = setList;
+        console.log(list, 'LIST');
     };
 
     public addAlert = (settings: IAlert) => {
@@ -35,5 +30,6 @@ class AlertController {
         this.setList([this.settings, ...this.list]);
     };
 }
+
 const instance = AlertController.getInstance();
 export default instance;

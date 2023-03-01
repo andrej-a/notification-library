@@ -8,13 +8,15 @@ const Tester = () => {
                 onClick={() =>
                     instance.addAlert({
                         position: 'bottom-left',
+                        showAnimation: 'right-left',
+                        hideAnimation: 'to-right',
                         type: 'success',
-                        visibleTime: 5,
+                        visibleTime: 3,
                         title: 'Success message',
                         description: 'Some success message',
                         indent: 'medium',
                         color: 'green',
-                        isVisible: false,
+                        isVisible: true,
                     })
                 }>
                 SHOW

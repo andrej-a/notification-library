@@ -6,12 +6,7 @@ type AlertList = React.ForwardRefExoticComponent<IAlert & React.RefAttributes<un
 
 const AlertList = () => {
     const [list, setList] = useState<IAlert[]>([]);
-    const alertRef = useRef(null);
     instance.transferSettingsToComponent(list, setList);
-
-    useEffect(() => {
-        //console.log(alertRef.current, 'ALERTLIST');
-    }, []);
 
     return (
         <>
@@ -19,8 +14,10 @@ const AlertList = () => {
                 list.map(alert => {
                     return (
                         <Alert
+                            id={alert.id}
+                            showAnimation={alert.showAnimation}
+                            hideAnimation={alert.hideAnimation}
                             key={alert.id}
-                            ref={alertRef}
                             isVisible={alert.isVisible}
                             position={alert.position}
                             type={alert.type}

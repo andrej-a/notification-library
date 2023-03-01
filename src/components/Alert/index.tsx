@@ -2,35 +2,45 @@ import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } f
 import { AiOutlineStop } from 'react-icons/ai';
 import { GrStatusGood } from 'react-icons/gr';
 import { RiErrorWarningLine } from 'react-icons/ri';
-
+import instance from '../../service/alertController';
 import { IAlert } from '@/models/alert';
 
 import { ContentWrapper, DescriptionWrapper, IconWrapper, TitleWrapper, Wrapper } from './styles';
 
-export const Alert = forwardRef(({ position, type, visibleTime, title, description, indent, color }: IAlert, ref) => {
-    const [isVisible, setIsVisible] = useState(true);
-    const myRef = useRef(null);
+export const Alert = ({
+    position,
+    showAnimation,
+    hideAnimation,
+    id,
+    type,
+    visibleTime,
+    title,
+    description,
+    indent,
+    color,
+    isVisible,
+}: IAlert) => {
+    const [visibleState, setVisibleState] = useState(isVisible);
+    const componentManager = (id: string) => () => {
+        setVisibleState(!isVisible);
+        instance.removeAlert(id!);
+    };
 
     useEffect(() => {
-        let t = visibleTime;
-        while (t > 0) {
-            t -= 1;
-            console.log(visibleTime);
-        }
-        setIsVisible(!isVisible);
-    }, []);
+        const timer = setTimeout(() => {
+            componentManager(id!)();
+        }, visibleTime * 1000);
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [visibleTime]);
 
-    useImperativeHandle(ref, () => ({
-        get: () => {
-            if (myRef) {
-                return myRef.current;
-            }
-        },
-    }));
     return (
         <>
-            {isVisible && (
-                <Wrapper ref={myRef} params={{ position, indent, color }}>
+            {visibleState && (
+                <Wrapper
+                    onClick={componentManager(id!)}
+                    params={{ isVisible, hideAnimation, showAnimation, position, indent, color }}>
                     <IconWrapper>
                         {type === 'success' && <GrStatusGood style={{ width: '40px', height: '40px' }} />}
                         {type === 'warning' && <RiErrorWarningLine style={{ width: '40px', height: '40px' }} />}
@@ -46,10 +56,13 @@ export const Alert = forwardRef(({ position, type, visibleTime, title, descripti
             )}
         </>
     );
-});
+};
 
 Alert.defaultProps = {
-    position: 'bottom-right',
+    isVisible: true,
+    position: 'bottom-left',
+    showAnimation: 'left-right',
+    hideAnimation: 'to-right',
     type: 'success',
     visibleTime: 5,
     title: 'Success message',

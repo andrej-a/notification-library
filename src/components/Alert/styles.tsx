@@ -6,7 +6,7 @@ export const Wrapper = styled.div<{ params: Params }>`
     position: absolute;
 
     width: auto;
-    min-width: 300px;
+    min-width: 150px;
     max-width: 600px;
     height: auto;
     max-height: 130px;
