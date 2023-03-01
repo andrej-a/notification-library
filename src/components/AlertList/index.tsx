@@ -15,8 +15,8 @@ const AlertList = () => {
                     return (
                         <Alert
                             id={alert.id}
-                            showAnimation={alert.showAnimation}
-                            hideAnimation={alert.hideAnimation}
+                            spawnAnimation={alert.spawnAnimation}
+                            fadeAnimation={alert.fadeAnimation}
                             key={alert.id}
                             isVisible={alert.isVisible}
                             position={alert.position}

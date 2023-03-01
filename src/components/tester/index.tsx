@@ -8,8 +8,8 @@ const Tester = () => {
                 onClick={() =>
                     instance.addAlert({
                         position: 'bottom-left',
-                        showAnimation: 'right-left',
-                        hideAnimation: 'to-right',
+                        spawnAnimation: 'smooth-sliding-in',
+                        fadeAnimation: 'to-right',
                         type: 'success',
                         visibleTime: 3,
                         title: 'Success message',

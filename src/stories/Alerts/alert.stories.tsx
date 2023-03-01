@@ -12,12 +12,26 @@ export default {
 
 const Template: Story<IAlert> = args => <Alert {...args} />;
 
+export const NotificationAlert = Template.bind({});
+NotificationAlert.args = {
+    isVisible: true,
+    position: 'top-left',
+    spawnAnimation: 'smooth-sliding-in',
+    fadeAnimation: 'to-right',
+    type: 'alert',
+    visibleTime: 5,
+    title: 'Notification title!',
+    description: 'Notification alert description!',
+    indent: 'small',
+    color: 'blue',
+};
+
 export const SuccessAlert = Template.bind({});
 SuccessAlert.args = {
     isVisible: true,
     position: 'top-left',
-    showAnimation: 'left-right',
-    hideAnimation: 'to-right',
+    spawnAnimation: 'smooth-sliding-in',
+    fadeAnimation: 'to-right',
     type: 'success',
     visibleTime: 5,
     title: 'Success title!',
@@ -29,8 +43,8 @@ export const WarningAlert = Template.bind({});
 WarningAlert.args = {
     isVisible: true,
     position: 'top-left',
-    showAnimation: 'left-right',
-    hideAnimation: 'to-right',
+    spawnAnimation: 'smooth-sliding-in',
+    fadeAnimation: 'to-right',
     type: 'warning',
     visibleTime: 5,
     title: 'Warning title!',
@@ -42,8 +56,8 @@ export const ErrorAlert = Template.bind({});
 ErrorAlert.args = {
     isVisible: true,
     position: 'top-left',
-    showAnimation: 'left-right',
-    hideAnimation: 'to-right',
+    spawnAnimation: 'smooth-sliding-in',
+    fadeAnimation: 'to-right',
     type: 'error',
     visibleTime: 5,
     title: 'Error title!',

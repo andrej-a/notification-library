@@ -16,6 +16,7 @@ class AlertController {
     };
 
     public removeAlert = (id: string) => {
+        console.log(this.list);
         this.setList(this.list.filter(alert => alert.id !== id));
     };
 

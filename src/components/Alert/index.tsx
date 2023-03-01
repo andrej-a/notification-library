@@ -2,6 +2,7 @@ import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } f
 import { AiOutlineStop } from 'react-icons/ai';
 import { GrStatusGood } from 'react-icons/gr';
 import { RiErrorWarningLine } from 'react-icons/ri';
+import { HiOutlineBellAlert } from 'react-icons/hi2';
 import instance from '../../service/alertController';
 import { IAlert } from '@/models/alert';
 
@@ -9,8 +10,8 @@ import { ContentWrapper, DescriptionWrapper, IconWrapper, TitleWrapper, Wrapper 
 
 export const Alert = ({
     position,
-    showAnimation,
-    hideAnimation,
+    spawnAnimation,
+    fadeAnimation,
     id,
     type,
     visibleTime,
@@ -21,30 +22,32 @@ export const Alert = ({
     isVisible,
 }: IAlert) => {
     const [visibleState, setVisibleState] = useState(isVisible);
+
     const componentManager = (id: string) => () => {
         setVisibleState(!isVisible);
         instance.removeAlert(id!);
     };
 
-    useEffect(() => {
+    /* useEffect(() => {
         const timer = setTimeout(() => {
             componentManager(id!)();
         }, visibleTime * 1000);
         return () => {
             clearTimeout(timer);
         };
-    }, [visibleTime]);
+    }, [visibleTime]); */
 
     return (
         <>
             {visibleState && (
                 <Wrapper
                     onClick={componentManager(id!)}
-                    params={{ isVisible, hideAnimation, showAnimation, position, indent, color }}>
+                    params={{ isVisible, fadeAnimation, spawnAnimation, position, indent, color }}>
                     <IconWrapper>
-                        {type === 'success' && <GrStatusGood style={{ width: '40px', height: '40px' }} />}
-                        {type === 'warning' && <RiErrorWarningLine style={{ width: '40px', height: '40px' }} />}
-                        {type === 'error' && <AiOutlineStop style={{ width: '40px', height: '40px' }} />}
+                        {type === 'alert' && <HiOutlineBellAlert />}
+                        {type === 'success' && <GrStatusGood />}
+                        {type === 'warning' && <RiErrorWarningLine />}
+                        {type === 'error' && <AiOutlineStop />}
                     </IconWrapper>
                     <ContentWrapper>
                         <TitleWrapper>
@@ -61,8 +64,8 @@ export const Alert = ({
 Alert.defaultProps = {
     isVisible: true,
     position: 'bottom-left',
-    showAnimation: 'left-right',
-    hideAnimation: 'to-right',
+    spawnAnimation: 'smooth-sliding-in',
+    fadeAnimation: 'to-right',
     type: 'success',
     visibleTime: 5,
     title: 'Success message',
@@ -70,14 +73,3 @@ Alert.defaultProps = {
     indent: 'medium',
     color: 'green',
 };
-
-/* const [state, setState] = useState<IAlert>({
-    isVisible: false,
-    position: 'bottom-right',
-    type: 'success',
-    visibleTime: 5,
-    title: 'Success message',
-    description: 'Some success message',
-    indent: 'medium',
-    color: 'green',
-}); */

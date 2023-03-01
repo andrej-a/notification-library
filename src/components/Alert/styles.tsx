@@ -1,77 +1,39 @@
 import styled, { css } from 'styled-components';
-
+import getIndent from '../../helpers/getIndent';
+import getPosition from '../../helpers/getPosition';
+import getSpawnAnimation from '../../helpers/animation/getSpawnAnimation';
 import { Params } from '@/models/alert';
 
 export const Wrapper = styled.div<{ params: Params }>`
     position: absolute;
+    ${({ params: { position } }) => getPosition(position)}
 
     width: auto;
-    min-width: 150px;
+    min-width: 350px;
     max-width: 600px;
     height: auto;
     max-height: 130px;
     display: flex;
+    padding: 10px;
 
     text-align: center;
     background-color: ${({ params: { color } }) => color};
-    margin: 5px;
+    color: #fff;
+    font-size: 16px;
+    font-family: Helvetica, sans-serif;
 
-    ${({ params: { indent } }) => {
-        switch (indent) {
-            case 'small':
-                return css`
-                    padding: 5px;
-                `;
-            case 'medium':
-                return css`
-                    padding: 10px;
-                `;
-            case 'big':
-                return css`
-                    padding: 15px;
-                `;
-            default:
-                return css`
-                    padding: 5px;
-                `;
-        }
-    }};
+    ${({ params: { indent } }) => getIndent(indent)};
 
-    ${({ params: { position } }) => {
-        switch (position) {
-            case 'top-left':
-                return css`
-                    top: 0;
-                    left: 0;
-                `;
-            case 'top-right':
-                return css`
-                    top: 0;
-                    left: 100%;
-                `;
-            case 'bottom-left':
-                return css`
-                    top: 100%;
-                    left: 0;
-                `;
-            case 'bottom-right':
-                return css`
-                    top: 100%;
-                    left: 100%;
-                `;
-            default:
-                return css`
-                    top: 100%;
-                    left: 100%;
-                `;
-        }
-    }}
+    ${({ params: { position, spawnAnimation } }) => getSpawnAnimation(spawnAnimation, position)};
 `;
 export const IconWrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-right: 5px;
+    svg {
+        display: block;
+        fill: #fff;
+        width: 40px;
+        height: 40px;
+    }
 `;
 export const ContentWrapper = styled.div`
     width: 90%;
@@ -87,6 +49,8 @@ export const TitleWrapper = styled.div`
     justify-content: center;
 `;
 export const DescriptionWrapper = styled.div`
+    width: auto;
+    height: auto;
     display: flex;
     justify-content: center;
 `;
