@@ -7,16 +7,15 @@ const Tester = () => {
             <button
                 onClick={() =>
                     instance.addAlert({
-                        position: 'bottom-left',
+                        position: 'bottom-right',
                         spawnAnimation: 'smooth-sliding-in',
-                        fadeAnimation: 'to-right',
+                        fadeAnimation: 'smooth-sliding-out',
                         type: 'success',
-                        visibleTime: 3,
+                        visibleTime: 100000,
                         title: 'Success message',
                         description: 'Some success message',
                         indent: 'medium',
                         color: 'green',
-                        isVisible: true,
                     })
                 }>
                 SHOW

@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useLayoutEffect, useRef, useState } from 'react';
 import { AiOutlineStop } from 'react-icons/ai';
 import { GrStatusGood } from 'react-icons/gr';
 import { RiErrorWarningLine } from 'react-icons/ri';
@@ -19,45 +19,44 @@ export const Alert = ({
     description,
     indent,
     color,
-    isVisible,
+    animationDuration,
+    visibleState,
 }: IAlert) => {
-    const [visibleState, setVisibleState] = useState(isVisible);
-
     const componentManager = (id: string) => () => {
-        setVisibleState(!isVisible);
-        instance.removeAlert(id!);
+        instance.hideAlert(id);
+        setTimeout(() => {
+            instance.removeAlert(id!);
+        }, animationDuration!);
     };
 
-    /* useEffect(() => {
-        const timer = setTimeout(() => {
-            componentManager(id!)();
-        }, visibleTime * 1000);
-        return () => {
-            clearTimeout(timer);
-        };
-    }, [visibleTime]); */
+    useLayoutEffect(() => {
+        if (visibleState) {
+            const timer = setTimeout(() => {
+                componentManager(id!)();
+            }, visibleTime! + animationDuration!);
+            return () => {
+                clearTimeout(timer);
+            };
+        }
+    }, [visibleTime, visibleState]);
 
     return (
-        <>
-            {visibleState && (
-                <Wrapper
-                    onClick={componentManager(id!)}
-                    params={{ isVisible, fadeAnimation, spawnAnimation, position, indent, color }}>
-                    <IconWrapper>
-                        {type === 'alert' && <HiOutlineBellAlert />}
-                        {type === 'success' && <GrStatusGood />}
-                        {type === 'warning' && <RiErrorWarningLine />}
-                        {type === 'error' && <AiOutlineStop />}
-                    </IconWrapper>
-                    <ContentWrapper>
-                        <TitleWrapper>
-                            <h4>{title}</h4>
-                        </TitleWrapper>
-                        <DescriptionWrapper>{description}</DescriptionWrapper>
-                    </ContentWrapper>
-                </Wrapper>
-            )}
-        </>
+        <Wrapper
+            onClick={componentManager(id!)}
+            params={{ animationDuration, visibleState, fadeAnimation, spawnAnimation, position, indent, color }}>
+            <IconWrapper>
+                {type === 'alert' && <HiOutlineBellAlert />}
+                {type === 'success' && <GrStatusGood />}
+                {type === 'warning' && <RiErrorWarningLine />}
+                {type === 'error' && <AiOutlineStop />}
+            </IconWrapper>
+            <ContentWrapper>
+                <TitleWrapper>
+                    <h4>{title}</h4>
+                </TitleWrapper>
+                <DescriptionWrapper>{description}</DescriptionWrapper>
+            </ContentWrapper>
+        </Wrapper>
     );
 };
 

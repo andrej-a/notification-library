@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { IAlert } from '../models/alert';
 import React from 'react';
+
 class AlertController {
     private static instance: AlertController;
     static componentRef: React.MutableRefObject<JSX.Element>;
@@ -15,19 +16,27 @@ class AlertController {
         return AlertController.instance;
     };
 
+    public hideAlert = (id: string) => {
+        const index = this.list.findIndex(alert => alert.id === id);
+        this.setList([
+            ...this.list.slice(0, index),
+            { ...this.list[index], visibleState: false },
+            ...this.list.slice(index + 1),
+        ]);
+    };
+
     public removeAlert = (id: string) => {
-        console.log(this.list);
+        console.log(this.list, 'LIST REMOVE');
         this.setList(this.list.filter(alert => alert.id !== id));
     };
 
-    public transferSettingsToComponent = (list: IAlert[], setList: React.Dispatch<React.SetStateAction<IAlert[]>>) => {
+    public transferSettingsToComponent = (list: IAlert[]) => {
         this.list = list;
-        this.setList = setList;
-        console.log(list, 'LIST');
+        console.log(list, 'LIST TRANSFER');
     };
 
     public addAlert = (settings: IAlert) => {
-        this.settings = { id: uuidv4(), ...settings };
+        this.settings = { id: uuidv4(), visibleState: true, animationDuration: 1500, ...settings };
         this.setList([this.settings, ...this.list]);
     };
 }

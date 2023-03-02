@@ -3,15 +3,19 @@ import getSmoothSlidingIn from './getSmoothSlidingIn';
 import getFadeIn from './getFadeIn';
 import { FlattenSimpleInterpolation } from 'styled-components';
 
-const getSpawnAnimation = (spawnAnimation: spawnAnimation, position: position): FlattenSimpleInterpolation => {
+const getSpawnAnimation = (
+    spawnAnimation: spawnAnimation,
+    position: position,
+    animationDuration: number,
+): FlattenSimpleInterpolation => {
     switch (spawnAnimation) {
         case 'smooth-sliding-in':
-            return getSmoothSlidingIn(position);
+            return getSmoothSlidingIn(position, animationDuration);
         case 'fade-in':
-            return getFadeIn();
+            return getFadeIn(animationDuration);
 
         default:
-            return getSmoothSlidingIn(position);
+            return getSmoothSlidingIn(position, animationDuration);
     }
 };
 

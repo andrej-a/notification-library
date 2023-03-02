@@ -2,31 +2,40 @@ import styled, { css } from 'styled-components';
 import getIndent from '../../helpers/getIndent';
 import getPosition from '../../helpers/getPosition';
 import getSpawnAnimation from '../../helpers/animation/getSpawnAnimation';
+import getFadeAnimation from '../../helpers/animation/getFadeAnimation';
 import { Params } from '@/models/alert';
 
 export const Wrapper = styled.div<{ params: Params }>`
-    position: absolute;
+    position: sticky;
     ${({ params: { position } }) => getPosition(position)}
+    z-index: 1000000;
 
     width: auto;
-    min-width: 350px;
-    max-width: 600px;
+    width: 350px;
     height: auto;
     max-height: 130px;
     display: flex;
     padding: 10px;
+    ${({ params: { indent } }) => getIndent(indent)};
 
     text-align: center;
     background-color: ${({ params: { color } }) => color};
     color: #fff;
     font-size: 16px;
     font-family: Helvetica, sans-serif;
+    cursor: pointer;
 
-    ${({ params: { indent } }) => getIndent(indent)};
+    will-change: opacity, transform;
 
-    ${({ params: { position, spawnAnimation } }) => getSpawnAnimation(spawnAnimation, position)};
+    ${({ params: { animationDuration, position, spawnAnimation, fadeAnimation, visibleState } }) => {
+        return visibleState
+            ? getSpawnAnimation(spawnAnimation, position, animationDuration!)
+            : getFadeAnimation(fadeAnimation, position, animationDuration!);
+    }};
 `;
 export const IconWrapper = styled.div`
+    display: flex;
+    align-items: center;
     margin-right: 5px;
     svg {
         display: block;

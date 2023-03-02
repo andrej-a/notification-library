@@ -1,32 +1,32 @@
-import { css, FlattenSimpleInterpolation } from 'styled-components';
-import { position } from '../../models/alert';
+import { css } from 'styled-components';
+import { position } from '@/models/alert';
 
-const getSmoothSlidingIn = (position: position, animationDuration: number): FlattenSimpleInterpolation => {
+const getSmoothSlidingOut = (position: position, animationDuration: number) => {
     const leftSide = css`
-        animation-name: from-left;
+        animation-name: to-left;
         animation-duration: ${animationDuration}ms;
-        @keyframes from-left {
+        @keyframes to-left {
             0% {
-                opacity: 0;
-                transform: translateX(-9000px);
-            }
-            100% {
                 opacity: 1;
                 transform: translateX(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-9000px);
             }
         }
     `;
     const rightSide = css`
-        animation-name: from-right;
+        animation-name: to-right;
         animation-duration: ${animationDuration}ms;
-        @keyframes from-right {
+        @keyframes to-right {
             0% {
-                opacity: 0;
-                transform: translateX(9000px);
-            }
-            100% {
                 opacity: 1;
                 transform: translateX(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(9000px);
             }
         }
     `;
@@ -44,4 +44,4 @@ const getSmoothSlidingIn = (position: position, animationDuration: number): Flat
     }
 };
 
-export default getSmoothSlidingIn;
+export default getSmoothSlidingOut;
