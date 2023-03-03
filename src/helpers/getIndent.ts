@@ -1,5 +1,6 @@
-import { indent } from '../models/alert';
 import { css, FlattenSimpleInterpolation } from 'styled-components';
+
+import { indent } from '../models/alert';
 
 const getIndent = (indent: indent): FlattenSimpleInterpolation => {
     switch (indent) {

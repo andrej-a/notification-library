@@ -1,5 +1,6 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
 import { IAlert } from '@/models/alert';
 import { Story } from '@storybook/react';
 
@@ -19,7 +20,7 @@ NotificationAlert.args = {
     spawnAnimation: 'smooth-sliding-in',
     fadeAnimation: 'fade-out',
     type: 'alert',
-    visibleTime: 5,
+    visibleTime: 5000,
     title: 'Notification title!',
     description: 'Notification alert description!',
     indent: 'small',
@@ -35,7 +36,7 @@ SuccessAlert.args = {
     spawnAnimation: 'smooth-sliding-in',
     fadeAnimation: 'fade-out',
     type: 'success',
-    visibleTime: 5,
+    visibleTime: 5000,
     title: 'Success title!',
     description: 'Success alert description!',
     indent: 'small',
@@ -50,7 +51,7 @@ WarningAlert.args = {
     spawnAnimation: 'smooth-sliding-in',
     fadeAnimation: 'fade-out',
     type: 'warning',
-    visibleTime: 5,
+    visibleTime: 5000,
     title: 'Warning title!',
     description: 'Warning alert description!',
     indent: 'small',
@@ -65,7 +66,7 @@ ErrorAlert.args = {
     spawnAnimation: 'smooth-sliding-in',
     fadeAnimation: 'fade-out',
     type: 'error',
-    visibleTime: 5,
+    visibleTime: 5000,
     title: 'Error title!',
     description: 'Error alert description!',
     indent: 'small',

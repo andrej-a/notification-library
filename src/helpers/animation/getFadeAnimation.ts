@@ -1,7 +1,8 @@
 import { FlattenSimpleInterpolation } from 'styled-components';
+
 import { fadeAnimation, position } from '../../models/alert';
-import getSmoothSlidingOut from './getSmoothSlidingOut';
 import getFadeOut from './getFadeOut';
+import getSmoothSlidingOut from './getSmoothSlidingOut';
 
 const getFadeAnimation = (
     fadeAnimation: fadeAnimation,

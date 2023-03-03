@@ -18,5 +18,3 @@ export interface IAlert {
     animationDuration?: number;
     visibleState?: boolean;
 }
-
-export interface Params extends IAlert {}

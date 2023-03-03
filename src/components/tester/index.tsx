@@ -1,9 +1,11 @@
 import React from 'react';
-import AlertPortal from '../AlertPortal';
+
 import instance from '../../service/alertController';
+import AlertPortal from '../AlertPortal';
+
 const Tester = () => {
     return (
-        <>
+        <React.Fragment>
             <button
                 onClick={() =>
                     instance.addAlert({
@@ -16,12 +18,11 @@ const Tester = () => {
                         description: 'Some success message',
                         indent: 'medium',
                         color: 'green',
-                    })
-                }>
+                    })}>
                 SHOW
             </button>
             <AlertPortal />
-        </>
+        </React.Fragment>
     );
 };
 export default Tester;

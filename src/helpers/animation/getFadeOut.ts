@@ -2,10 +2,10 @@ import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 const getFadeOut = (animationDuration: number): FlattenSimpleInterpolation => {
     return css`
-        animation-name: fade-in;
+        animation-name: fade-out;
         animation-duration: ${animationDuration}ms;
 
-        @keyframes fade-in {
+        @keyframes fade-out {
             0% {
                 opacity: 1;
             }

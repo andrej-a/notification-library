@@ -1,12 +1,15 @@
-import { v4 as uuidv4 } from 'uuid';
-import { IAlert } from '../models/alert';
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
+import { IAlert } from '../models/alert';
 
 class AlertController {
     private static instance: AlertController;
-    static componentRef: React.MutableRefObject<JSX.Element>;
+
     settings: IAlert | undefined;
+
     list!: IAlert[];
+
     setList!: React.Dispatch<React.SetStateAction<IAlert[]>>;
 
     public static getInstance = (): AlertController => {

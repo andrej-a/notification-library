@@ -1,11 +1,12 @@
-import React, { forwardRef, useEffect, useImperativeHandle, useLayoutEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { AiOutlineStop } from 'react-icons/ai';
 import { GrStatusGood } from 'react-icons/gr';
-import { RiErrorWarningLine } from 'react-icons/ri';
 import { HiOutlineBellAlert } from 'react-icons/hi2';
-import instance from '../../service/alertController';
+import { RiErrorWarningLine } from 'react-icons/ri';
+
 import { IAlert } from '@/models/alert';
 
+import instance from '../../service/alertController';
 import { ContentWrapper, DescriptionWrapper, IconWrapper, TitleWrapper, Wrapper } from './styles';
 
 export const Alert = ({
@@ -22,14 +23,17 @@ export const Alert = ({
     animationDuration,
     visibleState,
 }: IAlert) => {
-    const componentManager = (id: string) => () => {
-        instance.hideAlert(id);
-        setTimeout(() => {
-            instance.removeAlert(id!);
-        }, animationDuration!);
-    };
+    const componentManager = useCallback(
+        (id: string) => () => {
+            instance.hideAlert(id);
+            setTimeout(() => {
+                instance.removeAlert(id!);
+            }, animationDuration!);
+        },
+        [animationDuration],
+    );
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (visibleState) {
             const timer = setTimeout(() => {
                 componentManager(id!)();
@@ -38,7 +42,7 @@ export const Alert = ({
                 clearTimeout(timer);
             };
         }
-    }, [visibleTime, visibleState]);
+    }, [visibleTime, visibleState, animationDuration, componentManager, id]);
 
     return (
         <Wrapper
@@ -61,12 +65,14 @@ export const Alert = ({
 };
 
 Alert.defaultProps = {
-    isVisible: true,
+    id: '12345',
+    visibleState: true,
     position: 'bottom-left',
     spawnAnimation: 'smooth-sliding-in',
-    fadeAnimation: 'to-right',
+    fadeAnimation: 'smooth-sliding-out',
     type: 'success',
-    visibleTime: 5,
+    visibleTime: 5000,
+    animationDuration: 1500,
     title: 'Success message',
     description: 'Some success message',
     indent: 'medium',

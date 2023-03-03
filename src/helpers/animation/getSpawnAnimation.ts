@@ -1,7 +1,8 @@
-import { spawnAnimation, position } from '../../models/alert';
-import getSmoothSlidingIn from './getSmoothSlidingIn';
-import getFadeIn from './getFadeIn';
 import { FlattenSimpleInterpolation } from 'styled-components';
+
+import { position,spawnAnimation } from '../../models/alert';
+import getFadeIn from './getFadeIn';
+import getSmoothSlidingIn from './getSmoothSlidingIn';
 
 const getSpawnAnimation = (
     spawnAnimation: spawnAnimation,

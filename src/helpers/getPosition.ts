@@ -1,5 +1,6 @@
-import { position } from '../models/alert';
 import { css, FlattenSimpleInterpolation } from 'styled-components';
+
+import { position } from '../models/alert';
 
 const getPosition = (position: position): FlattenSimpleInterpolation => {
     switch (position) {

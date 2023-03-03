@@ -1,5 +1,7 @@
-import Tester from '../../components/tester/index';
 import React from 'react';
+
+import Tester from '../../components/tester/index';
+
 export default {
     title: 'Tester',
     component: Tester,

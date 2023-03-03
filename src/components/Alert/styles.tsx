@@ -1,11 +1,13 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+
+import { IAlert } from '@/models/alert';
+
+import getFadeAnimation from '../../helpers/animation/getFadeAnimation';
+import getSpawnAnimation from '../../helpers/animation/getSpawnAnimation';
 import getIndent from '../../helpers/getIndent';
 import getPosition from '../../helpers/getPosition';
-import getSpawnAnimation from '../../helpers/animation/getSpawnAnimation';
-import getFadeAnimation from '../../helpers/animation/getFadeAnimation';
-import { Params } from '@/models/alert';
 
-export const Wrapper = styled.div<{ params: Params }>`
+export const Wrapper = styled.div<{ params: IAlert }>`
     position: sticky;
     ${({ params: { position } }) => getPosition(position)}
     z-index: 1000000;

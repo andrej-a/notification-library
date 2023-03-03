@@ -1,7 +1,9 @@
+import React, { useEffect, useLayoutEffect, useState } from 'react';
+
 import { IAlert } from '@/models/alert';
-import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
-import { Alert } from '../Alert';
+
 import instance from '../../service/alertController';
+import { Alert } from '../Alert';
 
 const AlertList = () => {
     const [list, setList] = useState<IAlert[]>([]);

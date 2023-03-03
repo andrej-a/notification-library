@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+
 import { position } from '@/models/alert';
 
 const getSmoothSlidingOut = (position: position, animationDuration: number) => {
