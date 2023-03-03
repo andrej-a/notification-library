@@ -7,18 +7,19 @@ const Tester = () => {
     return (
         <React.Fragment>
             <button
-                onClick={() =>
+                onClick={() => {
                     instance.addAlert({
-                        position: 'bottom-right',
+                        position: 'bottom-left',
                         spawnAnimation: 'smooth-sliding-in',
                         fadeAnimation: 'smooth-sliding-out',
                         type: 'success',
-                        visibleTime: 100000,
+                        visibleTime: 3000,
                         title: 'Success message',
                         description: 'Some success message',
                         indent: 'medium',
                         color: 'green',
-                    })}>
+                    });
+                }}>
                 SHOW
             </button>
             <AlertPortal />

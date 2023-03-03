@@ -19,25 +19,40 @@ const AlertList = () => {
     return (
         <>
             {list.length > 0 &&
-                list.map(alert => {
-                    return (
-                        <Alert
-                            animationDuration={alert.animationDuration}
-                            id={alert.id}
-                            spawnAnimation={alert.spawnAnimation}
-                            fadeAnimation={alert.fadeAnimation}
-                            key={alert.id}
-                            position={alert.position}
-                            type={alert.type}
-                            visibleTime={alert.visibleTime}
-                            title={alert.title}
-                            description={alert.description}
-                            indent={alert.indent}
-                            color={alert.color}
-                            visibleState={alert.visibleState}
-                        />
-                    );
-                })}
+                list.map(
+                    ({
+                        animationDuration,
+                        id,
+                        spawnAnimation,
+                        fadeAnimation,
+                        position,
+                        type,
+                        title,
+                        visibleTime,
+                        description,
+                        indent,
+                        color,
+                        visibleState,
+                    }) => {
+                        return (
+                            <Alert
+                                animationDuration={animationDuration}
+                                id={id}
+                                spawnAnimation={spawnAnimation}
+                                fadeAnimation={fadeAnimation}
+                                key={id}
+                                position={position}
+                                type={type}
+                                visibleTime={visibleTime}
+                                title={title}
+                                description={description}
+                                indent={indent}
+                                color={color}
+                                visibleState={visibleState}
+                            />
+                        );
+                    },
+                )}
         </>
     );
 };

@@ -2,7 +2,9 @@ import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { IAlert } from '../models/alert';
+import constants from '../models/enums';
 
+const { MAX_ALERTS_PER_TIME, ANIMATION_DURATION } = constants;
 class AlertController {
     private static instance: AlertController;
 
@@ -11,6 +13,8 @@ class AlertController {
     list!: IAlert[];
 
     setList!: React.Dispatch<React.SetStateAction<IAlert[]>>;
+
+    queue: IAlert[] = [];
 
     public static getInstance = (): AlertController => {
         if (!AlertController.instance) {
@@ -29,20 +33,30 @@ class AlertController {
     };
 
     public removeAlert = (id: string) => {
-        console.log(this.list, 'LIST REMOVE');
-        this.setList(this.list.filter(alert => alert.id !== id));
+        if (this.queue.length) {
+            this.setList([this.queue[0], ...this.list.filter(alert => alert.id !== id)]);
+            this.queue.shift();
+        } else {
+            this.setList(this.list.filter(alert => alert.id !== id));
+        }
+        console.log(this.queue);
     };
 
     public transferSettingsToComponent = (list: IAlert[]) => {
         this.list = list;
-        console.log(list, 'LIST TRANSFER');
     };
 
     public addAlert = (settings: IAlert) => {
-        this.settings = { id: uuidv4(), visibleState: true, animationDuration: 1500, ...settings };
-        this.setList([this.settings, ...this.list]);
+        this.settings = { id: uuidv4(), visibleState: true, animationDuration: ANIMATION_DURATION, ...settings };
+
+        if (this.list.length === MAX_ALERTS_PER_TIME) {
+            this.queue.push(this.settings);
+        } else {
+            this.setList([this.settings, ...this.list]);
+        }
     };
 }
 
 const instance = AlertController.getInstance();
+export const createAlert = instance.addAlert;
 export default instance;

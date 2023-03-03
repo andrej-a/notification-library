@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { FC, useCallback, useEffect } from 'react';
 import { AiOutlineStop } from 'react-icons/ai';
 import { GrStatusGood } from 'react-icons/gr';
 import { HiOutlineBellAlert } from 'react-icons/hi2';
@@ -9,7 +9,7 @@ import { IAlert } from '@/models/alert';
 import instance from '../../service/alertController';
 import { ContentWrapper, DescriptionWrapper, IconWrapper, TitleWrapper, Wrapper } from './styles';
 
-export const Alert = ({
+export const Alert: FC<IAlert> = ({
     position,
     spawnAnimation,
     fadeAnimation,
@@ -22,7 +22,7 @@ export const Alert = ({
     color,
     animationDuration,
     visibleState,
-}: IAlert) => {
+}) => {
     const componentManager = useCallback(
         (id: string) => () => {
             instance.hideAlert(id);
