@@ -22,6 +22,7 @@ export const Alert: FC<IAlert> = ({
     color,
     animationDuration,
     visibleState,
+    alertsCount,
 }) => {
     const componentManager = useCallback(
         (id: string) => () => {
@@ -47,7 +48,16 @@ export const Alert: FC<IAlert> = ({
     return (
         <Wrapper
             onClick={componentManager(id!)}
-            params={{ animationDuration, visibleState, fadeAnimation, spawnAnimation, position, indent, color }}>
+            params={{
+                alertsCount,
+                animationDuration,
+                visibleState,
+                fadeAnimation,
+                spawnAnimation,
+                position,
+                indent,
+                color,
+            }}>
             <IconWrapper>
                 {type === 'alert' && <HiOutlineBellAlert />}
                 {type === 'success' && <GrStatusGood />}

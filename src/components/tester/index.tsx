@@ -9,11 +9,11 @@ const Tester = () => {
             <button
                 onClick={() => {
                     instance.addAlert({
-                        position: 'bottom-left',
+                        position: 'bottom-right',
                         spawnAnimation: 'smooth-sliding-in',
                         fadeAnimation: 'smooth-sliding-out',
                         type: 'success',
-                        visibleTime: 3000,
+                        visibleTime: 300000000,
                         title: 'Success message',
                         description: 'Some success message',
                         indent: 'medium',

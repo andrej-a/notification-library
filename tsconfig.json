@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
         "target": "ES6",
-        "lib": ["ES2015", "DOM"],
+        "lib": ["ES6", "DOM"],
         "jsx": "react",
         "module": "es6",
         "moduleResolution": "node",
         "declaration": true,
         "sourceMap": true,
-        "outDir": "./dist/",
+        "outDir": "./dist",
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "strict": true,
@@ -18,6 +18,6 @@
             "@/*": ["./src/*"]
         },
     },
-    "include": ["src"],
-    "exclude": ["node_modules", "dist"],
+    "include": ["src", "src/index.ts"],
+    "exclude": ["node_modules", "dist", "./src/stories"],
 }

@@ -2,16 +2,16 @@ import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { IAlert } from '@/models/alert';
-import { Story } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Alert } from '../../components/Alert/index';
 
 export default {
     title: 'Alert',
     component: Alert,
-};
+} as ComponentMeta<typeof Alert>;
 
-const Template: Story<IAlert> = args => <Alert {...args} />;
+const Template: ComponentStory<typeof Alert> = args => <Alert {...args} />;
 
 export const NotificationAlert = Template.bind({});
 NotificationAlert.args = {
@@ -24,7 +24,7 @@ NotificationAlert.args = {
     title: 'Notification title!',
     description: 'Notification alert description!',
     indent: 'small',
-    color: 'blue',
+    color: '#00b2ff',
     visibleState: true,
     animationDuration: 1500,
 };
@@ -40,7 +40,7 @@ SuccessAlert.args = {
     title: 'Success title!',
     description: 'Success alert description!',
     indent: 'small',
-    color: 'green',
+    color: '#00cc2d',
     visibleState: true,
     animationDuration: 1500,
 };
@@ -55,7 +55,7 @@ WarningAlert.args = {
     title: 'Warning title!',
     description: 'Warning alert description!',
     indent: 'small',
-    color: 'orange',
+    color: '#ff9900',
     visibleState: true,
     animationDuration: 1500,
 };
@@ -70,7 +70,7 @@ ErrorAlert.args = {
     title: 'Error title!',
     description: 'Error alert description!',
     indent: 'small',
-    color: 'red',
+    color: '#d22525',
     visibleState: true,
     animationDuration: 1500,
 };

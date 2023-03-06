@@ -1,23 +1,13 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React from 'react';
 
-import { IAlert } from '@/models/alert';
-
-import instance from '../../service/alertController';
 import { Alert } from '../Alert';
-
+import useList from '../../hooks/useList';
+import { ListWrapper } from './styles';
 const AlertList = () => {
-    const [list, setList] = useState<IAlert[]>([]);
-
-    useLayoutEffect(() => {
-        instance.transferSettingsToComponent(list);
-    }, [list]);
-
-    useEffect(() => {
-        instance.setList = setList;
-    }, []);
+    const { list } = useList();
 
     return (
-        <>
+        <ListWrapper>
             {list.length > 0 &&
                 list.map(
                     ({
@@ -49,11 +39,12 @@ const AlertList = () => {
                                 indent={indent}
                                 color={color}
                                 visibleState={visibleState}
+                                alertsCount={list.length}
                             />
                         );
                     },
                 )}
-        </>
+        </ListWrapper>
     );
 };
 

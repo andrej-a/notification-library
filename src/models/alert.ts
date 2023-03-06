@@ -17,4 +17,5 @@ export interface IAlert {
     color: string;
     animationDuration?: number;
     visibleState?: boolean;
+    alertsCount?: number;
 }

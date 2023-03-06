@@ -2,7 +2,7 @@ import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { position } from '../models/alert';
 
-const getPosition = (position: position): FlattenSimpleInterpolation => {
+const getPosition = (position: position, alertsCount: number): FlattenSimpleInterpolation => {
     switch (position) {
         case 'top-left':
             return css`
@@ -12,22 +12,34 @@ const getPosition = (position: position): FlattenSimpleInterpolation => {
         case 'top-right':
             return css`
                 top: 0;
-                left: 100%;
+                left: calc(100vw - 390px);
+
+                @media (max-width: 768px) {
+                    left: calc(100vw - 290px);
+                }
             `;
         case 'bottom-left':
             return css`
-                top: 100%;
+                top: calc(100vh - ${80 * alertsCount}px);
                 left: 0;
             `;
         case 'bottom-right':
             return css`
-                top: 100%;
-                left: 100%;
+                top: calc(100vh - ${80 * alertsCount}px);
+                left: calc(100vw - 390px);
+
+                @media (max-width: 768px) {
+                    left: calc(100vw - 290px);
+                }
             `;
         default:
             return css`
-                top: 100%;
-                left: 100%;
+                top: calc(100vh - ${80 * alertsCount}px);
+                left: calc(100vw - 390px);
+
+                @media (max-width: 768px) {
+                    left: calc(100vw - 290px);
+                }
             `;
     }
 };

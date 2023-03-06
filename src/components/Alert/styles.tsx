@@ -8,14 +8,12 @@ import getIndent from '../../helpers/getIndent';
 import getPosition from '../../helpers/getPosition';
 
 export const Wrapper = styled.div<{ params: IAlert }>`
-    position: sticky;
-    ${({ params: { position } }) => getPosition(position)}
+    position: relative;
+    ${({ params: { position, alertsCount } }) => getPosition(position, alertsCount!)}
     z-index: 1000000;
 
-    width: auto;
     width: 350px;
-    height: auto;
-    max-height: 130px;
+    height: 60px;
     display: flex;
     padding: 10px;
     ${({ params: { indent } }) => getIndent(indent)};
@@ -27,6 +25,8 @@ export const Wrapper = styled.div<{ params: IAlert }>`
     font-family: Helvetica, sans-serif;
     cursor: pointer;
 
+    pointer-events: auto;
+
     will-change: opacity, transform;
 
     ${({ params: { animationDuration, position, spawnAnimation, fadeAnimation, visibleState } }) => {
@@ -34,6 +34,10 @@ export const Wrapper = styled.div<{ params: IAlert }>`
             ? getSpawnAnimation(spawnAnimation, position, animationDuration!)
             : getFadeAnimation(fadeAnimation, position, animationDuration!);
     }};
+
+    @media (max-width: 768px) {
+        width: 260px;
+    }
 `;
 export const IconWrapper = styled.div`
     display: flex;
@@ -50,7 +54,7 @@ export const ContentWrapper = styled.div`
     width: 90%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 `;
 export const TitleWrapper = styled.div`
