@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 import { IAlert } from '@/models/alert';
 
-import getFadeAnimation from '../../helpers/animation/getFadeAnimation';
-import getSpawnAnimation from '../../helpers/animation/getSpawnAnimation';
-import getIndent from '../../helpers/getIndent';
-import getPosition from '../../helpers/getPosition';
+import getFadeAnimation from '@/helpers/animation/getFadeAnimation';
+import getSpawnAnimation from '@/helpers/animation/getSpawnAnimation';
+import getIndent from '@/helpers/getIndent';
+import getPosition from '@/helpers/getPosition';
 
 export const Wrapper = styled.div<{ params: IAlert }>`
     position: relative;

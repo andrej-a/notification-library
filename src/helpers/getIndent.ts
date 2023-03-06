@@ -1,24 +1,24 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { indent } from '../models/alert';
+import { indent } from '@/models/alert';
 
 const getIndent = (indent: indent): FlattenSimpleInterpolation => {
     switch (indent) {
         case 'small':
             return css`
-                margin: 5px;
+                margin: 0 10px;
             `;
         case 'medium':
             return css`
-                margin: 10px;
+                margin: 0 20px;
             `;
         case 'large':
             return css`
-                margin: 15px;
+                margin: 0 30px;
             `;
         default:
             return css`
-                padding: 5px;
+                margin: 0 10px;
             `;
     }
 };

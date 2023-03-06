@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Alert } from '../Alert';
-import useList from '../../hooks/useList';
+import { Alert } from '@/components/Alert';
+import useList from '@/hooks/useList';
 import { ListWrapper } from './styles';
+
 const AlertList = () => {
     const { list } = useList();
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { IAlert } from '@/models/alert';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Alert } from '../../components/Alert/index';

@@ -1,5 +1,5 @@
-import { IAlert } from '../models/alert';
-import ListManager from '../models/listManager';
+import { IAlert } from '@/models/alert';
+import ListManager from '@/models/listManager';
 
 class AlertController {
     private static instance: AlertController;
@@ -16,21 +16,15 @@ class AlertController {
     };
 
     public hideAlert = (id: string) => {
-        if (this.listManager) {
-            this.listManager.hideAlert(id);
-        }
+        this.listManager?.hideAlert(id);
     };
 
     public removeAlert = (id: string) => {
-        if (this.listManager) {
-            this.listManager.removeAlert(id);
-        }
+        this.listManager?.removeAlert(id);
     };
 
     public addAlert = (settings: IAlert) => {
-        if (this.listManager) {
-            this.listManager.addAlertToList(settings);
-        }
+        this.listManager?.addAlertToList(settings);
     };
 }
 

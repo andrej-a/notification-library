@@ -1,6 +1,6 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { position } from '../../models/alert';
+import { position } from '@/models/alert';
 
 const getSmoothSlidingIn = (position: position, animationDuration: number): FlattenSimpleInterpolation => {
     const leftSide = css`
