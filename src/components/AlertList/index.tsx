@@ -10,8 +10,8 @@ const AlertList = () => {
 
     return (
         <ListWrapper>
-            {list.length > 0
-                && list.map(
+            {list.length > 0 &&
+                list.map(
                     ({
                         animationDuration,
                         id,

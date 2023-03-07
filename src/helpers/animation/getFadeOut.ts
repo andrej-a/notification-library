@@ -1,5 +1,6 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
-
+import constants from '@/models/enums';
+const { OPACITY_FULL, OPACITY_NONE } = constants;
 const getFadeOut = (animationDuration: number): FlattenSimpleInterpolation => {
     return css`
         animation-name: fade-out;
@@ -7,11 +8,11 @@ const getFadeOut = (animationDuration: number): FlattenSimpleInterpolation => {
 
         @keyframes fade-out {
             0% {
-                opacity: 1;
+                opacity: ${OPACITY_FULL};
             }
 
             100% {
-                opacity: 0;
+                opacity: ${OPACITY_NONE};
             }
         }
     `;

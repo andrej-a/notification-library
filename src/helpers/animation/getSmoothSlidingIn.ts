@@ -1,6 +1,8 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { position } from '@/models/alert';
+import constants from '@/models/enums';
+const { OPACITY_FULL, OPACITY_NONE, BEHIND_SCREEN, ON_SCREEN } = constants;
 
 const getSmoothSlidingIn = (position: position, animationDuration: number): FlattenSimpleInterpolation => {
     const leftSide = css`
@@ -8,12 +10,12 @@ const getSmoothSlidingIn = (position: position, animationDuration: number): Flat
         animation-duration: ${animationDuration}ms;
         @keyframes from-left {
             0% {
-                opacity: 0;
-                transform: translateX(-9000px);
+                opacity: ${OPACITY_NONE};
+                transform: translateX(-${BEHIND_SCREEN}px);
             }
             100% {
-                opacity: 1;
-                transform: translateX(0);
+                opacity: ${OPACITY_FULL};
+                transform: translateX(${ON_SCREEN});
             }
         }
     `;
@@ -22,12 +24,12 @@ const getSmoothSlidingIn = (position: position, animationDuration: number): Flat
         animation-duration: ${animationDuration}ms;
         @keyframes from-right {
             0% {
-                opacity: 0;
-                transform: translateX(9000px);
+                opacity: ${OPACITY_NONE};
+                transform: translateX(${BEHIND_SCREEN}px);
             }
             100% {
-                opacity: 1;
-                transform: translateX(0);
+                opacity: ${OPACITY_FULL};
+                transform: translateX(${ON_SCREEN});
             }
         }
     `;

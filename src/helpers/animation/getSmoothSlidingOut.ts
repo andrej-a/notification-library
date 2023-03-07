@@ -1,19 +1,20 @@
 import { css } from 'styled-components';
 
 import { position } from '@/models/alert';
-
+import constants from '@/models/enums';
+const { OPACITY_FULL, OPACITY_NONE, ON_SCREEN, BEHIND_SCREEN } = constants;
 const getSmoothSlidingOut = (position: position, animationDuration: number) => {
     const leftSide = css`
         animation-name: to-left;
         animation-duration: ${animationDuration}ms;
         @keyframes to-left {
             0% {
-                opacity: 1;
-                transform: translateX(0);
+                opacity: ${OPACITY_FULL};
+                transform: translateX(${ON_SCREEN});
             }
             100% {
-                opacity: 0;
-                transform: translateX(-9000px);
+                opacity: ${OPACITY_NONE};
+                transform: translateX(-${BEHIND_SCREEN}px);
             }
         }
     `;
@@ -22,12 +23,12 @@ const getSmoothSlidingOut = (position: position, animationDuration: number) => {
         animation-duration: ${animationDuration}ms;
         @keyframes to-right {
             0% {
-                opacity: 1;
-                transform: translateX(0);
+                opacity: ${OPACITY_FULL};
+                transform: translateX(${ON_SCREEN});
             }
             100% {
-                opacity: 0;
-                transform: translateX(9000px);
+                opacity: ${OPACITY_NONE};
+                transform: translateX(${BEHIND_SCREEN}px);
             }
         }
     `;
