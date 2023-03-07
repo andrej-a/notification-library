@@ -1,9 +1,10 @@
-import { IAlert } from '@/models/alert';
-import instance from '@/service/alertController';
 import { useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
+import { IAlert } from '@/models/alert';
 import constants from '@/models/enums';
 import ListManager from '@/models/listManager';
+import instance from '@/service/alertController';
 
 const { MAX_ALERTS_PER_TIME, ANIMATION_DURATION } = constants;
 
@@ -13,16 +14,7 @@ const useList = () => {
 
     useImperativeHandle(ref, () => ({
         addAlertToList: (settings: IAlert) => {
-            settings = {
-                id: uuidv4(),
-                visibleState: true,
-                animationDuration: ANIMATION_DURATION,
-                ...settings,
-            };
-
-            if (list.length === MAX_ALERTS_PER_TIME) {
-                return;
-            } else {
+            if (list.length < MAX_ALERTS_PER_TIME) {
                 setList([...list, settings]);
             }
         },

@@ -5,8 +5,8 @@ import { HiOutlineBellAlert } from 'react-icons/hi2';
 import { RiErrorWarningLine } from 'react-icons/ri';
 
 import { IAlert } from '@/models/alert';
-
 import instance from '@/service/alertController';
+
 import { ContentWrapper, DescriptionWrapper, IconWrapper, TitleWrapper, Wrapper } from './styles';
 
 export const Alert: FC<IAlert> = ({

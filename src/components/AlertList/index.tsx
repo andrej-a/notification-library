@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Alert } from '@/components/Alert';
 import useList from '@/hooks/useList';
+
 import { ListWrapper } from './styles';
 
 const AlertList = () => {
@@ -9,8 +10,8 @@ const AlertList = () => {
 
     return (
         <ListWrapper>
-            {list.length > 0 &&
-                list.map(
+            {list.length > 0
+                && list.map(
                     ({
                         animationDuration,
                         id,

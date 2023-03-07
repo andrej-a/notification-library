@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-import { IAlert } from '@/models/alert';
-
 import getFadeAnimation from '@/helpers/animation/getFadeAnimation';
 import getSpawnAnimation from '@/helpers/animation/getSpawnAnimation';
 import getIndent from '@/helpers/getIndent';
 import getPosition from '@/helpers/getPosition';
+import { IAlert } from '@/models/alert';
 
 export const Wrapper = styled.div<{ params: IAlert }>`
     position: relative;
@@ -13,7 +12,9 @@ export const Wrapper = styled.div<{ params: IAlert }>`
     z-index: 1000000;
 
     width: 350px;
-    height: 60px;
+    height: auto;
+    min-height: 60px;
+    max-height: 100px;
     display: flex;
     padding: 10px;
     ${({ params: { indent } }) => getIndent(indent)};
@@ -56,16 +57,22 @@ export const ContentWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    gap: 10px;
 `;
 export const TitleWrapper = styled.div`
     width: auto;
     height: auto;
+    max-height: 40%;
+    overflow: hidden;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 `;
 export const DescriptionWrapper = styled.div`
     width: auto;
     height: auto;
+    max-height: 60%;
+    overflow: hidden;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 `;

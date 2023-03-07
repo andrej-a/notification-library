@@ -1,7 +1,7 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta,ComponentStory } from '@storybook/react';
 
 import { Alert } from '../../components/Alert/index';
 
