@@ -1,12 +1,11 @@
 import { useEffect, useImperativeHandle, useRef, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 import { IAlert } from '@/models/alert';
 import constants from '@/models/enums';
 import ListManager from '@/models/listManager';
 import instance from '@/service/alertController';
 
-const { MAX_ALERTS_PER_TIME, ANIMATION_DURATION } = constants;
+const { MAX_ALERTS_PER_TIME } = constants;
 
 const useList = () => {
     const [list, setList] = useState<IAlert[]>([]);

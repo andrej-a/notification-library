@@ -1,5 +1,7 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
+
 import constants from '@/models/enums';
+
 const { OPACITY_FULL, OPACITY_NONE } = constants;
 const getFadeOut = (animationDuration: number): FlattenSimpleInterpolation => {
     return css`

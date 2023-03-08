@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-import constants from '@/models/enums';
+
 import getFadeAnimation from '@/helpers/animation/getFadeAnimation';
 import getSpawnAnimation from '@/helpers/animation/getSpawnAnimation';
 import getIndent from '@/helpers/getIndent';
 import getPosition from '@/helpers/getPosition';
 import { IAlert } from '@/models/alert';
+import constants from '@/models/enums';
 
 const { TABLET } = constants;
 export const Wrapper = styled.div<{ params: IAlert }>`

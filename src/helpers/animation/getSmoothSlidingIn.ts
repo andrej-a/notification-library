@@ -2,6 +2,7 @@ import { css, FlattenSimpleInterpolation } from 'styled-components';
 
 import { position } from '@/models/alert';
 import constants from '@/models/enums';
+
 const { OPACITY_FULL, OPACITY_NONE, BEHIND_SCREEN, ON_SCREEN } = constants;
 
 const getSmoothSlidingIn = (position: position, animationDuration: number): FlattenSimpleInterpolation => {

@@ -1,9 +1,10 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
-import theme from '@/styles/theme';
 import { ThemeProvider } from 'styled-components';
+
 import AlertList from '@/components/AlertList';
 import ErrorBoundary from '@/components/ErrorBoundary';
+import theme from '@/styles/theme';
 
 const AlertPortal = () => {
     return createPortal(

@@ -1,4 +1,5 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import React, { Component, ReactNode } from 'react';
+
 import Wrapper from './styles';
 
 interface Props {
@@ -10,9 +11,12 @@ interface State {
 }
 
 class ErrorBoundary extends Component<Props, State> {
-    public state: State = {
-        error: '',
-    };
+    constructor(props: Props) {
+        super(props);
+        this.state = {
+            error: '',
+        };
+    }
 
     public componentDidCatch(error: Error): void {
         this.setState({
@@ -24,7 +28,10 @@ class ErrorBoundary extends Component<Props, State> {
         if (this.state.error) {
             return (
                 <Wrapper>
-                    <h1>Sorry.. there was an error in alertor-library: {this.state.error}</h1>
+                    <h1>
+                        Sorry.. there was an error in alertor-library:
+                        {this.state.error}
+                    </h1>
                     <h2>Try to reload page</h2>
                 </Wrapper>
             );

@@ -1,7 +1,6 @@
+import settingsNormilize from '@/helpers/settingsNormilize';
 import { IAlert } from '@/models/alert';
 import ListManager from '@/models/listManager';
-import constants from '@/models/enums';
-import settingsNormilize from '@/helpers/settingsNormilize';
 
 class AlertController {
     private static instance: AlertController;

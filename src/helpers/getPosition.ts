@@ -1,18 +1,20 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
-import constants from '@/models/enums';
+
 import { position } from '@/models/alert';
+import constants from '@/models/enums';
+
 const { TABLET, DEFAULT_INDENT, DEFAULT_TABLET_INDENT, DEFAULT_TOP_INDENT } = constants;
 
 const getPosition = (position: position, alertsCount: number): FlattenSimpleInterpolation => {
     switch (position) {
         case 'top-left':
             return css`
-                top: 0;
+                top: 1vh;
                 left: 0;
             `;
         case 'top-right':
             return css`
-                top: 0;
+                top: 1vh;
                 left: calc(100vw - ${DEFAULT_INDENT}px);
 
                 @media (max-width: ${TABLET}px) {
