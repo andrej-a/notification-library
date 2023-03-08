@@ -1,4 +1,5 @@
 import GlobalStyle from '../src/globalStyles';
+import withTheme from './withTheme.decorator';
 
 export const parameters = {
     actions: {
@@ -19,4 +20,4 @@ const withGlobalStyle = Story => (
     </>
 );
 
-export const decorators = [withGlobalStyle];
+export const decorators = [withGlobalStyle, withTheme];

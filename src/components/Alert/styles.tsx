@@ -1,92 +1,82 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-import { Params } from '@/models/alert';
+import getFadeAnimation from '@/helpers/animation/getFadeAnimation';
+import getSpawnAnimation from '@/helpers/animation/getSpawnAnimation';
+import getIndent from '@/helpers/getIndent';
+import getPosition from '@/helpers/getPosition';
+import { IAlert } from '@/models/alert';
+import constants from '@/models/enums';
 
-export const Wrapper = styled.div<{ params: Params }>`
-    position: absolute;
+const { TABLET } = constants;
+export const Wrapper = styled.div<{ params: IAlert }>`
+    position: relative;
+    ${({ params: { position, alertsCount } }) => getPosition(position, alertsCount!)}
+    z-index: ${({ theme: { zIndex } }) => zIndex[100]};
 
-    width: auto;
-    min-width: 300px;
-    max-width: 600px;
-    height: auto;
-    max-height: 130px;
+    width: ${({ theme: { width } }) => width[350]}px;
+    height: ${({ theme: { height } }) => height[70]}px;
     display: flex;
+    padding: ${({ theme: { padding } }) => padding[10]}px;
+    ${({ params: { indent } }) => getIndent(indent)};
 
-    border-radius: 40px;
     text-align: center;
     background-color: ${({ params: { color } }) => color};
+    color: ${({ theme: { color } }) => color.white};
+    font-size: ${({ theme: { fontSize } }) => fontSize.s}px;
+    font-family: ${({ theme: { fontFamily } }) => fontFamily.default};
+    cursor: pointer;
 
-    ${({ params: { indent } }) => {
-        switch (indent) {
-            case 'small':
-                return css`
-                    padding: 5px;
-                `;
-            case 'medium':
-                return css`
-                    padding: 10px;
-                `;
-            case 'big':
-                return css`
-                    padding: 15px;
-                `;
-            default:
-                return css`
-                    padding: 5px;
-                `;
-        }
+    pointer-events: auto;
+
+    will-change: opacity, transform;
+
+    ${({ params: { animationDuration, position, spawnAnimation, fadeAnimation, visibleState } }) => {
+        return visibleState
+            ? getSpawnAnimation(spawnAnimation, position, animationDuration!)
+            : getFadeAnimation(fadeAnimation, position, animationDuration!);
     }};
 
-    ${({ params: { position } }) => {
-        switch (position) {
-            case 'top-left':
-                return css`
-                    top: 0;
-                    left: 0;
-                `;
-            case 'top-right':
-                return css`
-                    top: 0;
-                    left: 100%;
-                `;
-            case 'bottom-left':
-                return css`
-                    top: 100%;
-                    left: 0;
-                `;
-            case 'bottom-right':
-                return css`
-                    top: 100%;
-                    left: 100%;
-                `;
-            default:
-                return css`
-                    top: 100%;
-                    left: 100%;
-                `;
-        }
-    }}
+    @media (max-width: ${TABLET}px) {
+        width: ${({ theme: { width } }) => width[260]}px;
+    }
 `;
 export const IconWrapper = styled.div`
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-right: 5px;
+    margin-right: ${({ theme: { margin } }) => margin[5]}px;
+
+    svg {
+        display: block;
+        fill: ${({ theme: { color } }) => color.white};
+        width: ${({ theme: { width } }) => width[40]}px;
+        height: ${({ theme: { height } }) => height[40]}px;
+    }
 `;
 export const ContentWrapper = styled.div`
-    width: 90%;
+    width: ${({ theme: { width } }) => width[90]}%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
+    gap: ${({ theme: { gap } }) => gap[10]}px;
+
     align-items: center;
+    overflow: hidden;
 `;
 export const TitleWrapper = styled.div`
     width: auto;
     height: auto;
+    max-height: ${({ theme: { height } }) => height[40]}%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+
+    overflow: hidden;
 `;
 export const DescriptionWrapper = styled.div`
+    width: auto;
+    height: auto;
+    max-height: ${({ theme: { height } }) => height[60]}%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+
+    overflow: hidden;
 `;

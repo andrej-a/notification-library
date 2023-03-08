@@ -1,10 +1,13 @@
 import { babel } from '@rollup/plugin-babel';
-import external from 'rollup-plugin-peer-deps-external';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import { terser } from 'rollup-plugin-terser';
 import svgr from '@svgr/rollup';
-import url from 'url';
+import postcss from 'rollup-plugin-postcss';
+
+import packageJson from './package.json' assert { type: 'json' };
 
 export default [
     {
@@ -13,6 +16,7 @@ export default [
             {
                 file: 'dist/index.js',
                 format: 'cjs',
+                sourcemap: true,
             },
             {
                 file: 'dist/index.es.js',
@@ -25,8 +29,10 @@ export default [
                 exclude: 'node_modules/**',
                 presets: ['@babel/preset-react'],
             }),
-            external(),
+            peerDepsExternal(),
             resolve(),
+            commonjs(),
+            postcss(),
             typescript({
                 tsconfig: './tsconfig.json',
             }),

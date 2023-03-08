@@ -1,19 +1,68 @@
-import React from 'react';
+import React, { FC, useCallback, useEffect } from 'react';
 import { AiOutlineStop } from 'react-icons/ai';
 import { GrStatusGood } from 'react-icons/gr';
+import { HiOutlineBellAlert } from 'react-icons/hi2';
 import { RiErrorWarningLine } from 'react-icons/ri';
 
 import { IAlert } from '@/models/alert';
+import instance from '@/service/alertController';
 
-import { ContentWrapper,DescriptionWrapper, IconWrapper, TitleWrapper, Wrapper } from './styles';
+import { ContentWrapper, DescriptionWrapper, IconWrapper, TitleWrapper, Wrapper } from './styles';
 
-export const Alert = ({ position, type, duration, title, description, indent, color }: IAlert) => {
+export const Alert: FC<IAlert> = ({
+    position,
+    spawnAnimation,
+    fadeAnimation,
+    id,
+    type,
+    visibleTime,
+    title,
+    description,
+    indent,
+    color,
+    animationDuration,
+    visibleState,
+    alertsCount,
+}) => {
+    const componentManager = useCallback(
+        (id: string) => () => {
+            instance.hideAlert(id);
+            setTimeout(() => {
+                instance.removeAlert(id!);
+            }, animationDuration!);
+        },
+        [animationDuration],
+    );
+
+    useEffect(() => {
+        if (visibleState) {
+            const timer = setTimeout(() => {
+                componentManager(id!)();
+            }, visibleTime! + animationDuration!);
+            return () => {
+                clearTimeout(timer);
+            };
+        }
+    }, [visibleTime, visibleState, animationDuration, componentManager, id]);
+
     return (
-        <Wrapper params={{ position, indent, color }}>
+        <Wrapper
+            onClick={componentManager(id!)}
+            params={{
+                alertsCount,
+                animationDuration,
+                visibleState,
+                fadeAnimation,
+                spawnAnimation,
+                position,
+                indent,
+                color,
+            }}>
             <IconWrapper>
-                {type === 'success' && <GrStatusGood style={{ width: '40px', height: '40px' }} />}
-                {type === 'warning' && <RiErrorWarningLine style={{ width: '40px', height: '40px' }} />}
-                {type === 'error' && <AiOutlineStop style={{ width: '40px', height: '40px' }} />}
+                {type === 'alert' && <HiOutlineBellAlert />}
+                {type === 'success' && <GrStatusGood />}
+                {type === 'warning' && <RiErrorWarningLine />}
+                {type === 'error' && <AiOutlineStop />}
             </IconWrapper>
             <ContentWrapper>
                 <TitleWrapper>
@@ -26,9 +75,14 @@ export const Alert = ({ position, type, duration, title, description, indent, co
 };
 
 Alert.defaultProps = {
-    position: 'button-left',
+    id: '12345',
+    visibleState: true,
+    position: 'bottom-left',
+    spawnAnimation: 'smooth-sliding-in',
+    fadeAnimation: 'smooth-sliding-out',
     type: 'success',
-    duration: 5,
+    visibleTime: 5000,
+    animationDuration: 1500,
     title: 'Success message',
     description: 'Some success message',
     indent: 'medium',

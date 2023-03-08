@@ -1,15 +1,21 @@
-type position = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
-type alertType = 'success' | 'warning' | 'error';
-type indent = 'small' | 'medium' | 'big';
+export type position = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+type alertType = 'alert' | 'success' | 'warning' | 'error';
+export type indent = 'small' | 'medium' | 'large';
+export type spawnAnimation = 'smooth-sliding-in' | 'fade-in';
+export type fadeAnimation = 'smooth-sliding-out' | 'fade-out';
 
 export interface IAlert {
+    id?: string;
     position: position;
-    type: alertType;
-    duration: number;
-    title: string;
-    description: string;
+    spawnAnimation: spawnAnimation;
+    fadeAnimation: fadeAnimation;
+    type?: alertType;
+    visibleTime?: number;
+    title?: string;
+    description?: string;
     indent: indent;
     color: string;
+    animationDuration?: number;
+    visibleState?: boolean;
+    alertsCount?: number;
 }
-
-export type Params = Pick<IAlert, 'position' | 'color' | 'indent'>;

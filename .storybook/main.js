@@ -1,6 +1,7 @@
 const path = require('path');
+
 module.exports = {
-    stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+    stories: ['../src/**/*.stories.tsx'],
     addons: [
         '@storybook/addon-links',
         '@storybook/addon-essentials',
@@ -16,6 +17,9 @@ module.exports = {
             use: ['@svgr/webpack', 'url-loader'],
         });
 
+        config.resolve.alias = {
+            '@': path.resolve(__dirname, '..', 'src'),
+        };
         return config;
     },
     framework: '@storybook/react',

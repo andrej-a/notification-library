@@ -1,3 +1,4 @@
-import { Alert } from '@/components/Alert';
+import AlertPortal from '@/components/AlertPortal';
+import instance from '@/service/alertController';
 
-export { Alert };
+export { AlertPortal, instance };
