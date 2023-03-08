@@ -45,6 +45,9 @@ export const Alert: FC<IAlert> = ({
         }
     }, [visibleTime, visibleState, animationDuration, componentManager, id]);
 
+    const icons = [<HiOutlineBellAlert />, <RiErrorWarningLine />, <AiOutlineStop />, <GrStatusGood />];
+    const types = ['alert', 'warning', 'error', 'success'];
+
     return (
         <Wrapper
             onClick={componentManager(id!)}
@@ -59,10 +62,11 @@ export const Alert: FC<IAlert> = ({
                 color,
             }}>
             <IconWrapper>
-                {type === 'alert' && <HiOutlineBellAlert />}
-                {type === 'success' && <GrStatusGood />}
-                {type === 'warning' && <RiErrorWarningLine />}
-                {type === 'error' && <AiOutlineStop />}
+                {types.map((t: string, index: number) => {
+                    if (t === type) {
+                        return icons[index];
+                    }
+                })}
             </IconWrapper>
             <ContentWrapper>
                 <TitleWrapper>

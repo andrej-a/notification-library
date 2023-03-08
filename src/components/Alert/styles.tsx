@@ -54,6 +54,7 @@ export const IconWrapper = styled.div`
 `;
 export const ContentWrapper = styled.div`
     width: ${({ theme: { width } }) => width[90]}%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,8 +65,7 @@ export const ContentWrapper = styled.div`
 `;
 export const TitleWrapper = styled.div`
     width: auto;
-    height: auto;
-    max-height: ${({ theme: { height } }) => height[40]}%;
+    height: ${({ theme: { height } }) => height[40]}%;
     display: flex;
     justify-content: flex-start;
 
@@ -73,8 +73,7 @@ export const TitleWrapper = styled.div`
 `;
 export const DescriptionWrapper = styled.div`
     width: auto;
-    height: auto;
-    max-height: ${({ theme: { height } }) => height[60]}%;
+    height: ${({ theme: { height } }) => height[60]}%;
     display: flex;
     justify-content: flex-start;
 
