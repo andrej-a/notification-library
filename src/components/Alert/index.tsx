@@ -50,6 +50,7 @@ export const Alert: FC<IAlert> = ({
 
     return (
         <Wrapper
+            data-test="alertion"
             onClick={componentManager(id!)}
             params={{
                 alertsCount,

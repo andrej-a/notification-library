@@ -58,8 +58,9 @@ const Template = ({
     color,
 }) => {
     return (
-        <React.Fragment>
+        <>
             <button
+                id="test"
                 style={{ position: 'absolute', top: '50%', left: '50%' }}
                 onClick={() => {
                     instance.addAlert({
@@ -77,7 +78,7 @@ const Template = ({
                 ADD ALERT
             </button>
             <AlertPortal />
-        </React.Fragment>
+        </>
     );
 };
 

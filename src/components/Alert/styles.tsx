@@ -65,7 +65,8 @@ export const ContentWrapper = styled.div`
 `;
 export const TitleWrapper = styled.div`
     width: auto;
-    height: ${({ theme: { height } }) => height[40]}%;
+    height: auto;
+    max-height: ${({ theme: { height } }) => height[40]}%;
     display: flex;
     justify-content: flex-start;
 
@@ -73,7 +74,8 @@ export const TitleWrapper = styled.div`
 `;
 export const DescriptionWrapper = styled.div`
     width: auto;
-    height: ${({ theme: { height } }) => height[60]}%;
+    height: auto;
+    max-height: ${({ theme: { height } }) => height[60]}%;
     display: flex;
     justify-content: flex-start;
 
