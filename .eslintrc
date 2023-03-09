@@ -36,6 +36,7 @@
         "react/destructuring-assignment": "off",
         "array-callback-return": "off",
         "react/button-has-type": "off",
+        "import/no-extraneous-dependencies": "off",
         "react/default-props-match-prop-types": "off",
         "react/require-default-props": "off",
         "no-shadow": "off",

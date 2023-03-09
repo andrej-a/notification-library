@@ -34,7 +34,6 @@
     },
     "homepage": "https://github.com/andrej-a/notification-library#readme",
     "dependencies": {
-        "@cypress/react18": "^2.0.0",
         "prop-types": "^15.8.1",
         "react": "*",
         "react-dom": "*",
@@ -43,6 +42,7 @@
         "uuid": "^9.0.0"
     },
     "devDependencies": {
+        "@cypress/react18": "^2.0.0",
         "@babel/cli": "^7.6.2",
         "@babel/core": "^7.6.2",
         "@babel/plugin-proposal-class-properties": "^7.5.5",
