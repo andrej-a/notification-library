@@ -1,0 +1,38 @@
+import { useEffect, useImperativeHandle, useRef, useState } from 'react';
+
+import { IAlert } from '@/models/alert';
+import constants from '@/models/enums';
+import ListManager from '@/models/listManager';
+import instance from '@/service/alertController';
+
+const { MAX_ALERTS_PER_TIME } = constants;
+
+const useList = () => {
+    const [list, setList] = useState<IAlert[]>([]);
+    const ref = useRef<ListManager>();
+
+    useImperativeHandle(ref, () => ({
+        addAlertToList: (settings: IAlert) => {
+            if (list.length < MAX_ALERTS_PER_TIME) {
+                setList([...list, settings]);
+            }
+        },
+        hideAlert: (id: string) => {
+            const index = list.findIndex(alert => alert.id === id);
+            setList([...list.slice(0, index), { ...list[index], visibleState: false }, ...list.slice(index + 1)]);
+        },
+        removeAlert: (id: string) => {
+            setList(list.filter(alert => alert.id !== id));
+        },
+    }));
+
+    useEffect(() => {
+        instance.listManager = ref.current;
+    }, [list]);
+
+    return {
+        list,
+    };
+};
+
+export default useList;
