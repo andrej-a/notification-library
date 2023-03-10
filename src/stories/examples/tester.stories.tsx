@@ -1,12 +1,12 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import AlertPortal from '../../components/AlertPortal/index';
-import instance from '../../service/alertController';
+import AlertContainer from '../../components/AlertContainer/index';
+import alertService from '../../service/SingeltonController';
 
 export default {
     title: 'Notifications tester',
-    component: AlertPortal,
+    component: AlertContainer,
     argTypes: {
         id: {
             type: 'string,',
@@ -35,7 +35,7 @@ export default {
         },
         type: {
             control: { type: 'radio' },
-            options: ['alert', 'success', 'warning', 'error'],
+            options: ['info', 'success', 'warning', 'error'],
         },
         visibleTime: {
             type: 'number',
@@ -58,12 +58,12 @@ const Template = ({
     color,
 }) => {
     return (
-        <>
+        <React.Fragment>
             <button
                 id="test"
                 style={{ position: 'absolute', top: '50%', left: '50%' }}
                 onClick={() => {
-                    instance.addAlert({
+                    alertService.addAlert({
                         title,
                         spawnAnimation,
                         description,
@@ -77,8 +77,8 @@ const Template = ({
                 }}>
                 ADD ALERT
             </button>
-            <AlertPortal />
-        </>
+            <AlertContainer />
+        </React.Fragment>
     );
 };
 

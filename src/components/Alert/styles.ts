@@ -4,13 +4,14 @@ import getFadeAnimation from '@/helpers/animation/getFadeAnimation';
 import getSpawnAnimation from '@/helpers/animation/getSpawnAnimation';
 import getIndent from '@/helpers/getIndent';
 import getPosition from '@/helpers/getPosition';
-import { IAlert } from '@/models/alert';
-import constants from '@/models/enums';
+import { Params } from '@/types/alert';
+import constants from '@/types/constants';
 
 const { TABLET } = constants;
-export const Wrapper = styled.div<{ params: IAlert }>`
+export const Wrapper = styled.div<{ params: Params }>`
     position: relative;
-    ${({ params: { position, alertsCount } }) => getPosition(position, alertsCount!)}
+    ${({ params: { position, alertsCount } }) =>
+        getPosition(position, alertsCount!)}
     z-index: ${({ theme: { zIndex } }) => zIndex[100]};
 
     width: ${({ theme: { width } }) => width[350]}px;
@@ -30,7 +31,15 @@ export const Wrapper = styled.div<{ params: IAlert }>`
 
     will-change: opacity, transform;
 
-    ${({ params: { animationDuration, position, spawnAnimation, fadeAnimation, visibleState } }) => {
+    ${({
+        params: {
+            animationDuration,
+            position,
+            spawnAnimation,
+            fadeAnimation,
+            visibleState,
+        },
+    }) => {
         return visibleState
             ? getSpawnAnimation(spawnAnimation, position, animationDuration!)
             : getFadeAnimation(fadeAnimation, position, animationDuration!);

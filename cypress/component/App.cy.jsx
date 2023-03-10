@@ -13,8 +13,8 @@ beforeEach(() => {
 })
 
 describe('Components tests', () => {
-    it("Should render notification type of alert", () => {
-        mount(<TestAlert type={'error'} color={'#d22525'} />);
+    it("Should render notification type of info", () => {
+        mount(<TestAlert type={'info'} color={'#d22525'} />);
         cy.get('#test').click();
         cy.get('[data-test=alertion]')
             .should('have.css', 'background-color')

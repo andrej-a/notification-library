@@ -8,7 +8,7 @@ $ yarn add alertor-library
 Easy way to integrate notifications into your application.
 
 ```
-import { AlertPortal, instance } from 'alertor-library'
+import { AlertContainer, alertService } from 'alertor-library'
 ```
 
 This is literally all you need.
@@ -20,25 +20,25 @@ const App = (props) => {
     return (
             <ErrorBoundary>
                 <MyAwesomeApplication />
-                <AlertPortal />
+                <AlertContainer />
             </ErrorBoundary>
     );
 };
 ```
 
-Call addAlert method of the instance you imported before for any action you want to track, and alertor-library will do its job.
+Call addAlert method of the alertService you imported before for any action you want to track, and alertor-library will do its job.
 
 ```
 const someImpotantFunc = () => {
     try {
         // some impotant action
-        instance.addAlert({
+        alertService.addAlert({
             type: "success",
             title: "Hooray! Action was success!"
             description: "We did impotant work"
         })
     } catch(e) {
-        instance.addAlert({
+        alertService.addAlert({
             type: "error",
             title: "Something went wrong!"
             description: "Try one more time!"
@@ -49,7 +49,7 @@ const someImpotantFunc = () => {
 
 ## Customization
 
-instance.addAlert() method accepts an object with the following fields:
+alertService.addAlert() method accepts an object with the following fields:
 
 -   position (string type, can be **'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'**)
 -   spawnAnimation (string type, can be **'smooth-sliding-in' | 'fade-in'**)
@@ -62,7 +62,7 @@ instance.addAlert() method accepts an object with the following fields:
 -   color (string type, any color for notification background)
 
 ```
-instance.addAlert({
+alertService.addAlert({
     position: 'top-left',
     spawnAnimation: 'smooth-sliding-in',
     fadeAnimation: 'fade-out',

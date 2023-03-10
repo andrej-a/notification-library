@@ -1,11 +1,14 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { position } from '@/models/alert';
-import constants from '@/models/enums';
+import { position } from '@/types/alert';
+import constants from '@/types/constants';
 
-const { TABLET, DEFAULT_INDENT, DEFAULT_TABLET_INDENT, DEFAULT_TOP_INDENT } = constants;
+const { TABLET, DEFAULT_INDENT, DEFAULT_TABLET_INDENT, DEFAULT_TOP_INDENT } =    constants;
 
-const getPosition = (position: position, alertsCount: number): FlattenSimpleInterpolation => {
+const getPosition = (
+    position: position,
+    alertsCount: number,
+): FlattenSimpleInterpolation => {
     switch (position) {
         case 'top-left':
             return css`

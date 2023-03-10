@@ -16,4 +16,9 @@ const Wrapper = styled.div`
 
     pointer-events: none;
 `;
+export const ErrorDescription = styled.p`
+    max-width: ${({ theme: { width } }) => width[80]}%;
+
+    font-size: ${({ theme: { fontSize } }) => fontSize.s}px;
+`;
 export default Wrapper;

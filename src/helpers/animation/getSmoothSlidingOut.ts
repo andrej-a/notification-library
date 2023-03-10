@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
-import { position } from '@/models/alert';
-import constants from '@/models/enums';
+import { position } from '@/types/alert';
+import constants from '@/types/constants';
 
 const { OPACITY_FULL, OPACITY_NONE, ON_SCREEN, BEHIND_SCREEN } = constants;
 const getSmoothSlidingOut = (position: position, animationDuration: number) => {

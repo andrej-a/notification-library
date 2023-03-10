@@ -10,6 +10,7 @@ const theme = {
     },
     width: {
         40: 40,
+        80: 80,
         90: 90,
         100: 100,
         260: 260,
@@ -32,6 +33,10 @@ const theme = {
     },
     color: {
         white: '#fff',
+        lightBlue: '#00b2ff',
+        brightGreen: '#00cc2d',
+        darkOrange: '#ff9900',
+        darkRed: '#d22525',
     },
     fontSize: {
         s: 16,

@@ -1,38 +1,40 @@
-import React, { Component, ReactNode } from 'react';
+import React, { Component, ErrorInfo,ReactNode } from 'react';
 
-import Wrapper from './styles';
+import Wrapper, { ErrorDescription } from './styles';
 
 interface Props {
     children?: ReactNode;
 }
 
 interface State {
-    error: string;
+    errorsList: string[];
 }
 
 class ErrorBoundary extends Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            error: '',
+            errorsList: [],
         };
     }
 
-    public componentDidCatch(error: Error): void {
+    public componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
         this.setState({
-            error: error.name.toString(),
+            errorsList: [error.name, errorInfo.componentStack],
         });
     }
 
     public render() {
-        if (this.state.error) {
+        const { errorsList } = this.state;
+        if (errorsList.length) {
             return (
                 <Wrapper>
-                    <h1>
-                        Sorry.. there was an error in alertor-library:
-                        {this.state.error}
-                    </h1>
-                    <h2>Try to reload page</h2>
+                    <ErrorDescription>
+                        Sorry.. there is an error in alertor-library:
+                    </ErrorDescription>
+                    {errorsList.map(error => {
+                        return <ErrorDescription>{error}</ErrorDescription>;
+                    })}
                 </Wrapper>
             );
         }

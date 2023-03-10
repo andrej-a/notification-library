@@ -1,6 +1,6 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import constants from '@/models/enums';
+import constants from '@/types/constants';
 
 const { OPACITY_FULL, OPACITY_NONE } = constants;
 const getFadeIn = (animationDuration: number): FlattenSimpleInterpolation => {

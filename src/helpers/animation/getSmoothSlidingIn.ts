@@ -1,11 +1,14 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { position } from '@/models/alert';
-import constants from '@/models/enums';
+import { position } from '@/types/alert';
+import constants from '@/types/constants';
 
 const { OPACITY_FULL, OPACITY_NONE, BEHIND_SCREEN, ON_SCREEN } = constants;
 
-const getSmoothSlidingIn = (position: position, animationDuration: number): FlattenSimpleInterpolation => {
+const getSmoothSlidingIn = (
+    position: position,
+    animationDuration: number,
+): FlattenSimpleInterpolation => {
     const leftSide = css`
         animation-name: from-left;
         animation-duration: ${animationDuration}ms;

@@ -6,7 +6,7 @@ import AlertList from '@/components/AlertList';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import theme from '@/styles/theme';
 
-const AlertPortal = () => {
+const AlertContainer = () => {
     return createPortal(
         <ThemeProvider theme={theme}>
             <ErrorBoundary>
@@ -16,4 +16,4 @@ const AlertPortal = () => {
         document.body,
     );
 };
-export default AlertPortal;
+export default AlertContainer;

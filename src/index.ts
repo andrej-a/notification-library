@@ -1,4 +1,4 @@
-import AlertPortal from '@/components/AlertPortal';
-import instance from '@/service/alertController';
+import AlertContainer from '@/components/AlertContainer';
+import alertService from '@/service/SingeltonController';
 
-export { AlertPortal, instance };
+export { AlertContainer, alertService };

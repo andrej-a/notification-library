@@ -1,12 +1,12 @@
 import React from 'react';
 
 import { Alert } from '@/components/Alert';
-import useList from '@/hooks/useList';
+import useContainer from '@/hooks/useContainer';
 
 import { ListWrapper } from './styles';
 
 const AlertList = () => {
-    const { list } = useList();
+    const { list } = useContainer();
 
     return (
         <ListWrapper>

@@ -1,13 +1,17 @@
 import React, { FC, useCallback, useEffect } from 'react';
-import { AiOutlineStop } from 'react-icons/ai';
-import { GrStatusGood } from 'react-icons/gr';
-import { HiOutlineBellAlert } from 'react-icons/hi2';
-import { RiErrorWarningLine } from 'react-icons/ri';
 
-import { IAlert } from '@/models/alert';
-import instance from '@/service/alertController';
+import alertService from '@/service/SingeltonController';
+import { IAlert } from '@/types/alert';
+import { TYPES } from '@/types/constants';
 
-import { ContentWrapper, DescriptionWrapper, IconWrapper, TitleWrapper, Wrapper } from './styles';
+import alertionIcons from './config/icons';
+import {
+    ContentWrapper,
+    DescriptionWrapper,
+    IconWrapper,
+    TitleWrapper,
+    Wrapper,
+} from './styles';
 
 export const Alert: FC<IAlert> = ({
     position,
@@ -26,10 +30,10 @@ export const Alert: FC<IAlert> = ({
 }) => {
     const componentManager = useCallback(
         (id: string) => () => {
-            instance.hideAlert(id);
+            alertService.hideAlert(id);
             setTimeout(() => {
-                instance.removeAlert(id!);
-            }, animationDuration!);
+                alertService.removeAlert(id!);
+            }, animationDuration! - 20);
         },
         [animationDuration],
     );
@@ -38,15 +42,12 @@ export const Alert: FC<IAlert> = ({
         if (visibleState) {
             const timer = setTimeout(() => {
                 componentManager(id!)();
-            }, visibleTime! + animationDuration!);
+            }, visibleTime! + animationDuration! - 20);
             return () => {
                 clearTimeout(timer);
             };
         }
-    }, [visibleTime, visibleState, animationDuration, componentManager, id]);
-
-    const icons = [<HiOutlineBellAlert />, <RiErrorWarningLine />, <AiOutlineStop />, <GrStatusGood />];
-    const types = ['alert', 'warning', 'error', 'success'];
+    }, [animationDuration, componentManager, id, visibleState, visibleTime]);
 
     return (
         <Wrapper
@@ -63,9 +64,9 @@ export const Alert: FC<IAlert> = ({
                 color,
             }}>
             <IconWrapper>
-                {types.map((t: string, index: number) => {
-                    if (t === type) {
-                        return icons[index];
+                {TYPES.map((alertionType: string, index: number) => {
+                    if (alertionType === type) {
+                        return alertionIcons[index];
                     }
                 })}
             </IconWrapper>
@@ -77,19 +78,4 @@ export const Alert: FC<IAlert> = ({
             </ContentWrapper>
         </Wrapper>
     );
-};
-
-Alert.defaultProps = {
-    id: '12345',
-    visibleState: true,
-    position: 'bottom-left',
-    spawnAnimation: 'smooth-sliding-in',
-    fadeAnimation: 'smooth-sliding-out',
-    type: 'success',
-    visibleTime: 5000,
-    animationDuration: 1500,
-    title: 'Success message',
-    description: 'Some success message',
-    indent: 'medium',
-    color: 'green',
 };

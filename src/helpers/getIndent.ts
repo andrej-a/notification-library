@@ -1,7 +1,7 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { indent } from '@/models/alert';
-import constants from '@/models/enums';
+import { indent } from '@/types/alert';
+import constants from '@/types/constants';
 
 const { SMALL_MARGIN, MEDIUM_MARGIN, LARGE_MARGIN } = constants;
 
