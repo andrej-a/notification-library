@@ -133,13 +133,6 @@
             "last 1 safari version"
         ]
     },
-    "lint-staged": {
-        "*.{ts, tsx}": [
-            "npm run prettier:check",
-            "npm run eslint:test",
-            "git add"
-        ]
-    },
     "readme": "ERROR: No README data found!",
     "_id": "alertor-library@1.0.0"
 }
