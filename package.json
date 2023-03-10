@@ -135,7 +135,8 @@
     },
     "lint-staged": {
         "*.{ts, tsx}": [
-            "prettier --write",
+            "npm run prettier:check",
+            "npm run eslint:test",
             "git add"
         ]
     },
