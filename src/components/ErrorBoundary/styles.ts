@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
     position: fixed;
-    top: ${({ theme: { top } }) => top[0]};
-    left: ${({ theme: { left } }) => left[0]};
+    top: ${({ theme: { top } }) => top.s};
+    left: ${({ theme: { left } }) => left.s};
 
-    width: ${({ theme: { width } }) => width[100]}wv;
-    height: ${({ theme: { height } }) => height[100]}wh;
+    width: ${({ theme: { width } }) => width.l}wv;
+    height: ${({ theme: { height } }) => height.l}wh;
 
     display: flex;
     flex-direction: column;
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
     pointer-events: none;
 `;
 export const ErrorDescription = styled.p`
-    max-width: ${({ theme: { width } }) => width[80]}%;
+    max-width: ${({ theme: { width } }) => width.s}%;
 
     font-size: ${({ theme: { fontSize } }) => fontSize.s}px;
 `;

@@ -9,7 +9,7 @@ export const ListWrapper = styled.div<{ position: string }>`
     height: auto;
     display: flex;
     flex-direction: column;
-    gap: ${({ theme: { gap } }) => gap[10]}px;
+    gap: ${({ theme: { gap } }) => gap.s}px;
 
     pointer-events: none;
 `;

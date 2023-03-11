@@ -9,12 +9,12 @@ import constants from '@/types/constants';
 const { TABLET } = constants;
 export const Wrapper = styled.div<{ params: Params }>`
     position: relative;
-    z-index: ${({ theme: { zIndex } }) => zIndex[100]};
+    z-index: ${({ theme: { zIndex } }) => zIndex.xxl};
 
-    width: ${({ theme: { width } }) => width[350]}px;
-    height: ${({ theme: { height } }) => height[70]}px;
+    width: ${({ theme: { width } }) => width.xxl}px;
+    height: ${({ theme: { height } }) => height.xl}px;
     display: flex;
-    padding: ${({ theme: { padding } }) => padding[10]}px;
+    padding: ${({ theme: { padding } }) => padding.s}px;
     ${({ params: { indent } }) => getIndent(indent)};
 
     text-align: center;
@@ -43,28 +43,28 @@ export const Wrapper = styled.div<{ params: Params }>`
     }};
 
     @media (max-width: ${TABLET}px) {
-        width: ${({ theme: { width } }) => width[260]}px;
+        width: ${({ theme: { width } }) => width.xl}px;
     }
 `;
 export const IconWrapper = styled.div`
     display: flex;
     align-items: center;
-    margin-right: ${({ theme: { margin } }) => margin[5]}px;
+    margin-right: ${({ theme: { margin } }) => margin.s}px;
 
     svg {
         display: block;
         fill: ${({ theme: { color } }) => color.white};
-        width: ${({ theme: { width } }) => width[40]}px;
-        height: ${({ theme: { height } }) => height[40]}px;
+        width: ${({ theme: { width } }) => width.xs}px;
+        height: ${({ theme: { height } }) => height.m}px;
     }
 `;
 export const ContentWrapper = styled.div`
-    width: ${({ theme: { width } }) => width[90]}%;
-    height: 100%;
+    width: ${({ theme: { width } }) => width.m}%;
+    height: ${({ theme: { height } }) => height.xxl}%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: ${({ theme: { gap } }) => gap[10]}px;
+    gap: ${({ theme: { gap } }) => gap.s}px;
 
     align-items: center;
     overflow: hidden;
@@ -72,7 +72,7 @@ export const ContentWrapper = styled.div`
 export const TitleWrapper = styled.div`
     width: auto;
     height: auto;
-    max-height: ${({ theme: { height } }) => height[40]}%;
+    max-height: ${({ theme: { height } }) => height.m}%;
     display: flex;
     justify-content: flex-start;
 
@@ -81,7 +81,7 @@ export const TitleWrapper = styled.div`
 export const DescriptionWrapper = styled.div`
     width: auto;
     height: auto;
-    max-height: ${({ theme: { height } }) => height[60]}%;
+    max-height: ${({ theme: { height } }) => height.l}%;
     display: flex;
     justify-content: flex-start;
 
