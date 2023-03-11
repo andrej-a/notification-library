@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import theme from '@/styles/theme';
 import { IAlert } from '@/types/alert';
-import constants, { INDENTS,TYPES } from '@/types/constants';
+import constants, { INDENTS, TYPES } from '@/types/constants';
 
 import cutString from './cutString';
 
@@ -10,7 +10,8 @@ const {
     color: { lightBlue },
 } = theme;
 
-const { MAX_TITLE_LENGTH, MAX_DESCRIPTION_LENGTH, ANIMATION_DURATION } =    constants;
+const { MAX_TITLE_LENGTH, MAX_DESCRIPTION_LENGTH, ANIMATION_DURATION } =
+    constants;
 
 const settingsNormilize = ({
     position,

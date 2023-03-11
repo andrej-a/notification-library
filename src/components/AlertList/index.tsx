@@ -9,9 +9,9 @@ const AlertList = () => {
     const { containersPositions } = useContainer();
 
     return (
-        <React.Fragment>
-            {containersPositions.length > 0
-                && containersPositions.map(([key, alerts]) => {
+        <>
+            {containersPositions.length > 0 &&
+                containersPositions.map(([key, alerts]) => {
                     return (
                         <ListWrapper key={key} position={key}>
                             {alerts.map(
@@ -53,7 +53,7 @@ const AlertList = () => {
                         </ListWrapper>
                     );
                 })}
-        </React.Fragment>
+        </>
     );
 };
 

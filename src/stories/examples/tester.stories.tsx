@@ -74,7 +74,8 @@ const Template = ({
                         visibleTime,
                         color,
                     });
-                }}>
+                }}
+            >
                 ADD ALERT
             </button>
             <AlertContainer />

@@ -1,7 +1,7 @@
 import { useEffect, useImperativeHandle, useRef, useState } from 'react';
 
 import alertService from '@/service/SingeltonController';
-import { Containers,IAlert, Position } from '@/types/alert';
+import { Containers, IAlert, Position } from '@/types/alert';
 import constants from '@/types/constants';
 import ListManager from '@/types/singeltonMethods';
 

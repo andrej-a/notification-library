@@ -60,7 +60,8 @@ export const Alert: FC<IAlert> = ({
                 position,
                 indent,
                 color,
-            }}>
+            }}
+        >
             <IconWrapper>
                 {TYPES.map((alertionType: string, index: number) => {
                     if (alertionType === type) {
