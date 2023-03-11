@@ -27,7 +27,6 @@ export interface IAlert {
 export type Params = Pick<
     IAlert,
     | 'animationDuration'
-    | 'alertsCount'
     | 'position'
     | 'visibleState'
     | 'fadeAnimation'
@@ -36,3 +35,11 @@ export type Params = Pick<
     | 'indent'
     | 'color'
 >;
+
+export interface Position {
+    'top-left'?: IAlert[];
+    'top-right'?: IAlert[];
+    'bottom-left'?: IAlert[];
+    'bottom-right'?: IAlert[];
+}
+export type Containers = [[key: string, alerts: IAlert[]]] | [];

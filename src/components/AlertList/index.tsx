@@ -6,47 +6,54 @@ import useContainer from '@/hooks/useContainer';
 import { ListWrapper } from './styles';
 
 const AlertList = () => {
-    const { list } = useContainer();
+    const { containersPositions } = useContainer();
 
     return (
-        <ListWrapper>
-            {list.length > 0
-                && list.map(
-                    ({
-                        animationDuration,
-                        id,
-                        spawnAnimation,
-                        fadeAnimation,
-                        position,
-                        type,
-                        title,
-                        visibleTime,
-                        description,
-                        indent,
-                        color,
-                        visibleState,
-                    }) => {
-                        return (
-                            <Alert
-                                animationDuration={animationDuration}
-                                id={id}
-                                spawnAnimation={spawnAnimation}
-                                fadeAnimation={fadeAnimation}
-                                key={id}
-                                position={position}
-                                type={type}
-                                visibleTime={visibleTime}
-                                title={title}
-                                description={description}
-                                indent={indent}
-                                color={color}
-                                visibleState={visibleState}
-                                alertsCount={list.length}
-                            />
-                        );
-                    },
-                )}
-        </ListWrapper>
+        <React.Fragment>
+            {containersPositions.length > 0
+                && containersPositions.map(([key, alerts]) => {
+                    return (
+                        <ListWrapper key={key} position={key}>
+                            {alerts.map(
+                                ({
+                                    animationDuration,
+                                    spawnAnimation,
+                                    fadeAnimation,
+                                    id,
+                                    position,
+                                    visibleTime,
+                                    description,
+                                    indent,
+                                    color,
+                                    visibleState,
+                                    type,
+                                    title,
+                                }) => {
+                                    return (
+                                        <Alert
+                                            animationDuration={
+                                                animationDuration
+                                            }
+                                            id={id}
+                                            spawnAnimation={spawnAnimation}
+                                            fadeAnimation={fadeAnimation}
+                                            key={id}
+                                            position={position}
+                                            type={type}
+                                            visibleTime={visibleTime}
+                                            title={title}
+                                            description={description}
+                                            indent={indent}
+                                            color={color}
+                                            visibleState={visibleState}
+                                        />
+                                    );
+                                },
+                            )}
+                        </ListWrapper>
+                    );
+                })}
+        </React.Fragment>
     );
 };
 

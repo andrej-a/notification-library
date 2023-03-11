@@ -3,15 +3,12 @@ import styled from 'styled-components';
 import getFadeAnimation from '@/helpers/animation/getFadeAnimation';
 import getSpawnAnimation from '@/helpers/animation/getSpawnAnimation';
 import getIndent from '@/helpers/getIndent';
-import getPosition from '@/helpers/getPosition';
 import { Params } from '@/types/alert';
 import constants from '@/types/constants';
 
 const { TABLET } = constants;
 export const Wrapper = styled.div<{ params: Params }>`
     position: relative;
-    ${({ params: { position, alertsCount } }) =>
-        getPosition(position, alertsCount!)}
     z-index: ${({ theme: { zIndex } }) => zIndex[100]};
 
     width: ${({ theme: { width } }) => width[350]}px;

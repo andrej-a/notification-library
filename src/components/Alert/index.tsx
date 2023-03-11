@@ -26,7 +26,6 @@ export const Alert: FC<IAlert> = ({
     color,
     animationDuration,
     visibleState,
-    alertsCount,
 }) => {
     const componentManager = useCallback(
         (id: string) => () => {
@@ -54,7 +53,6 @@ export const Alert: FC<IAlert> = ({
             data-test="alertion"
             onClick={componentManager(id!)}
             params={{
-                alertsCount,
                 animationDuration,
                 visibleState,
                 fadeAnimation,

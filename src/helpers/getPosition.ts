@@ -1,51 +1,31 @@
 import { css, FlattenSimpleInterpolation } from 'styled-components';
 
-import { position } from '@/types/alert';
-import constants from '@/types/constants';
-
-const { TABLET, DEFAULT_INDENT, DEFAULT_TABLET_INDENT, DEFAULT_TOP_INDENT } =    constants;
-
-const getPosition = (
-    position: position,
-    alertsCount: number,
-): FlattenSimpleInterpolation => {
+const getPosition = (position: string): FlattenSimpleInterpolation => {
     switch (position) {
         case 'top-left':
             return css`
-                top: 1vh;
+                top: 0;
                 left: 0;
             `;
         case 'top-right':
             return css`
-                top: 1vh;
-                left: calc(100vw - ${DEFAULT_INDENT}px);
-
-                @media (max-width: ${TABLET}px) {
-                    left: calc(100vw - ${DEFAULT_TABLET_INDENT}px);
-                }
+                top: 0;
+                right: 0;
             `;
         case 'bottom-left':
             return css`
-                top: calc(100vh - ${DEFAULT_TOP_INDENT * alertsCount}px);
+                bottom: 0;
                 left: 0;
             `;
         case 'bottom-right':
             return css`
-                top: calc(100vh - ${DEFAULT_TOP_INDENT * alertsCount}px);
-                left: calc(100vw - ${DEFAULT_INDENT}px);
-
-                @media (max-width: ${TABLET}px) {
-                    left: calc(100vw - ${DEFAULT_TABLET_INDENT}px);
-                }
+                bottom: 0;
+                right: 0;
             `;
         default:
             return css`
-                top: calc(100vh - ${DEFAULT_TOP_INDENT * alertsCount}px);
-                left: calc(100vw - ${DEFAULT_INDENT}px);
-
-                @media (max-width: ${TABLET}px) {
-                    left: calc(100vw - ${DEFAULT_TABLET_INDENT}px);
-                }
+                bottom: 0;
+                right: 0;
             `;
     }
 };
