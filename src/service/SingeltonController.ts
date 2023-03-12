@@ -16,10 +16,6 @@ class SingeltonController {
         return SingeltonController.alertService;
     };
 
-    public hideAlert = (id: string) => {
-        this.listManager?.hideAlert(id);
-    };
-
     public removeAlert = (id: string) => {
         this.listManager?.removeAlert(id);
     };

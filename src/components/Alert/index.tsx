@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 
 import alertService from '@/service/SingeltonController';
 import { IAlert } from '@/types/alert';
@@ -9,6 +9,7 @@ import {
     ContentWrapper,
     DescriptionWrapper,
     IconWrapper,
+    Title,
     TitleWrapper,
     Wrapper,
 } from './styles';
@@ -25,28 +26,29 @@ export const Alert: FC<IAlert> = ({
     indent,
     color,
     animationDuration,
-    visibleState,
 }) => {
+    const [visibleState, setVisibleState] = useState(true);
+
     const componentManager = useCallback(
         (id: string) => () => {
-            alertService.hideAlert(id);
+            setVisibleState(false);
             setTimeout(() => {
                 alertService.removeAlert(id!);
-            }, animationDuration! - 20);
+            }, animationDuration - 20);
         },
-        [animationDuration],
+        [visibleState],
     );
 
     useEffect(() => {
         if (visibleState) {
             const timer = setTimeout(() => {
                 componentManager(id!)();
-            }, visibleTime! + animationDuration! - 20);
+            }, visibleTime + animationDuration - 20);
             return () => {
                 clearTimeout(timer);
             };
         }
-    }, [animationDuration, componentManager, id, visibleState, visibleTime]);
+    }, [visibleState]);
 
     return (
         <Wrapper
@@ -71,7 +73,7 @@ export const Alert: FC<IAlert> = ({
             </IconWrapper>
             <ContentWrapper>
                 <TitleWrapper>
-                    <h4>{title}</h4>
+                    <Title>{title}</Title>
                 </TitleWrapper>
                 <DescriptionWrapper>{description}</DescriptionWrapper>
             </ContentWrapper>

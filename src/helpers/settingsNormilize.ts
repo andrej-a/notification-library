@@ -26,7 +26,6 @@ const settingsNormilize = ({
 }: IAlert): IAlert => {
     return {
         id: uuidv4(),
-        visibleState: true,
         animationDuration: ANIMATION_DURATION,
         position: position || 'bottom-right',
         spawnAnimation: spawnAnimation || 'smooth-sliding-in',

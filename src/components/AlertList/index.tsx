@@ -9,7 +9,7 @@ const AlertList = () => {
     const { containersPositions } = useContainer();
 
     return (
-        <>
+        <React.Fragment>
             {containersPositions.length > 0 &&
                 containersPositions.map(([key, alerts]) => {
                     return (
@@ -25,7 +25,6 @@ const AlertList = () => {
                                     description,
                                     indent,
                                     color,
-                                    visibleState,
                                     type,
                                     title,
                                 }) => {
@@ -45,7 +44,6 @@ const AlertList = () => {
                                             description={description}
                                             indent={indent}
                                             color={color}
-                                            visibleState={visibleState}
                                         />
                                     );
                                 },
@@ -53,7 +51,7 @@ const AlertList = () => {
                         </ListWrapper>
                     );
                 })}
-        </>
+        </React.Fragment>
     );
 };
 

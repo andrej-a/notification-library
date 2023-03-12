@@ -78,6 +78,9 @@ export const TitleWrapper = styled.div`
 
     overflow: hidden;
 `;
+
+export const Title = styled.h4``;
+
 export const DescriptionWrapper = styled.div`
     width: auto;
     height: auto;

@@ -30,6 +30,7 @@
         "import/no-duplicates": "error",
         "arrow-parens": ["error", "as-needed"],
         "react/jsx-props-no-spreading": "off",
+        "react-hooks/exhaustive-deps": "off",
         "no-use-before-define": "off",
         "semi": "error",
         "prefer-destructuring": "off",
