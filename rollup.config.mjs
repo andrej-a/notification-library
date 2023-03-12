@@ -6,6 +6,7 @@ import typescript from '@rollup/plugin-typescript';
 import { terser } from 'rollup-plugin-terser';
 import svgr from '@svgr/rollup';
 import postcss from 'rollup-plugin-postcss';
+import url from 'rollup-plugin-url';
 
 export default [
     {
@@ -23,6 +24,10 @@ export default [
             },
         ],
         plugins: [
+            url({
+                include: ['**/*.woff', '**/*.woff2', '**/*.ttf', '**/*.eot'],
+                limit: Infinity,
+            }),
             babel({
                 exclude: 'node_modules/**',
                 presets: ['@babel/preset-react'],
