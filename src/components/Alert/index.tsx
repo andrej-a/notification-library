@@ -1,10 +1,10 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 
-import alertService from '@/service/SingeltonController';
+import alertService from '@/service/SingletonController';
 import { IAlert } from '@/types/alert';
 import { TYPES } from '@/types/constants';
 
-import alertionIcons from './config/icons';
+import alertionIcons from './icons';
 import {
     ContentWrapper,
     DescriptionWrapper,
@@ -27,7 +27,7 @@ export const Alert: FC<IAlert> = ({
     color,
     animationDuration,
 }) => {
-    const [visibleState, setVisibleState] = useState(true);
+    const [alertVisibleState, setVisibleState] = useState(true);
 
     const componentManager = useCallback(
         (id: string) => () => {
@@ -36,11 +36,11 @@ export const Alert: FC<IAlert> = ({
                 alertService.removeAlert(id!);
             }, animationDuration - 20);
         },
-        [visibleState],
+        [alertVisibleState],
     );
 
     useEffect(() => {
-        if (visibleState) {
+        if (alertVisibleState) {
             const timer = setTimeout(() => {
                 componentManager(id!)();
             }, visibleTime + animationDuration - 20);
@@ -48,7 +48,7 @@ export const Alert: FC<IAlert> = ({
                 clearTimeout(timer);
             };
         }
-    }, [visibleState]);
+    }, [alertVisibleState]);
 
     return (
         <Wrapper
@@ -56,14 +56,13 @@ export const Alert: FC<IAlert> = ({
             onClick={componentManager(id!)}
             params={{
                 animationDuration,
-                visibleState,
+                alertVisibleState,
                 fadeAnimation,
                 spawnAnimation,
                 position,
                 indent,
                 color,
-            }}
-        >
+            }}>
             <IconWrapper>
                 {TYPES.map((alertionType: string, index: number) => {
                     if (alertionType === type) {

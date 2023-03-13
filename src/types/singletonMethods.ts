@@ -1,8 +1,8 @@
 import { IAlert } from './alert';
 
-type SingeltonMethods = {
+type SingletonMethods = {
     addAlertToList: (settings: IAlert) => void;
     removeAlert: (id: string) => void;
 };
 
-export default SingeltonMethods;
+export default SingletonMethods;

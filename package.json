@@ -1,6 +1,6 @@
 {
     "name": "alertor-library",
-    "version": "1.0.9",
+    "version": "1.0.11",
     "description": "React notification library",
     "main": "dist/index.js",
     "module": "dist/index.es.js",
@@ -25,7 +25,7 @@
         "type": "git",
         "url": "git+https://github.com/andrej-a/notification-library.git"
     },
-    "keywords": [],
+    "keywords": ["notification", "notification-library", "toasts"],
     "author": {
         "name": "andrej-a"
     },
@@ -37,12 +37,12 @@
     "dependencies": {
         "react": "*",
         "react-dom": "*",
-        "rollup-plugin-url": "^3.0.1",
         "uuid": "*"
     },
     "devDependencies": {
         "@babel/cli": "^7.6.2",
         "@babel/core": "^7.6.2",
+        "rollup-plugin-url": "^3.0.1",
         "@babel/plugin-proposal-class-properties": "^7.5.5",
         "@babel/plugin-proposal-optional-chaining": "^7.6.0",
         "@babel/plugin-transform-runtime": "^7.6.2",

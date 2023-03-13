@@ -34,10 +34,10 @@ export const Wrapper = styled.div<{ params: Params }>`
             position,
             spawnAnimation,
             fadeAnimation,
-            visibleState,
+            alertVisibleState,
         },
     }) => {
-        return visibleState
+        return alertVisibleState
             ? getSpawnAnimation(spawnAnimation, position, animationDuration!)
             : getFadeAnimation(fadeAnimation, position, animationDuration!);
     }};

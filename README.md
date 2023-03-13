@@ -13,7 +13,7 @@ import { AlertContainer, alertService } from 'alertor-library'
 
 This is literally all you need.
 
-Just put <Alert Portal /> component to any place of of your application and get fun!
+Just put 'AlertContainer' component to any place of of your application and get fun!
 
 ```
 const App = (props) => {
@@ -54,7 +54,7 @@ alertService.addAlert() method accepts an object with the following fields:
 -   position (string type, can be **'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'**)
 -   spawnAnimation (string type, can be **'smooth-sliding-in' | 'fade-in'**)
 -   fadeAnimation (string type, can be **'smooth-sliding-out' | 'fade-out'**)
--   type (string type, can be **'alert' | 'success' | 'warning' | 'error'**)
+-   type (string type, can be **'info' | 'success' | 'warning' | 'error'**)
 -   visibleTime (number type, set time of the visible of the notification in **MS**)
 -   title (string type, title for your notification **no more 30 symbols**)
 -   description (string type, description for your notification **no more 30 symbols**)
@@ -66,7 +66,7 @@ alertService.addAlert({
     position: 'top-left',
     spawnAnimation: 'smooth-sliding-in',
     fadeAnimation: 'fade-out',
-    type: 'alert',
+    type: 'info',
     visibleTime: 5000,
     title: 'Notification title!',
     description: 'Notification alert description!',

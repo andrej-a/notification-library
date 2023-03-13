@@ -1,28 +1,30 @@
 import { useEffect, useImperativeHandle, useRef, useState } from 'react';
 
-import alertService from '@/service/SingeltonController';
+import alertService from '@/service/SingletonController';
 import { Containers, IAlert, Position } from '@/types/alert';
 import constants from '@/types/constants';
-import SingeltonMethods from '@/types/singeltonMethods';
+import SingletonMethods from '@/types/singletonMethods';
 
 const { MAX_ALERTS_PER_TIME } = constants;
 
 const useContainer = () => {
-    const [list, setList] = useState<IAlert[]>([]);
-    const [containersPositions, setcontainersPositions] = useState<Containers>(
+    const [listOfTheAlerts, setListOfTheAlerts] = useState<IAlert[]>([]);
+    const [containersPositions, setContainersPositions] = useState<Containers>(
         [],
     );
 
-    const ref = useRef<SingeltonMethods>();
+    const ref = useRef<SingletonMethods>();
 
     useImperativeHandle(ref, () => ({
         addAlertToList: (settings: IAlert) => {
-            if (list.length < MAX_ALERTS_PER_TIME) {
-                setList([...list, settings]);
+            if (listOfTheAlerts.length < MAX_ALERTS_PER_TIME) {
+                setListOfTheAlerts([...listOfTheAlerts, settings]);
             }
         },
         removeAlert: (id: string) => {
-            setList(list.filter(alert => alert.id !== id));
+            setListOfTheAlerts(
+                listOfTheAlerts.filter(alert => alert.id !== id),
+            );
         },
     }));
 
@@ -39,8 +41,8 @@ const useContainer = () => {
 
     useEffect(() => {
         alertService.listManager = ref.current;
-        setcontainersPositions(positionOfTheContainers(list));
-    }, [list]);
+        setContainersPositions(positionOfTheContainers(listOfTheAlerts));
+    }, [listOfTheAlerts]);
 
     return {
         containersPositions,

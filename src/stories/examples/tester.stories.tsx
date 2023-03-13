@@ -2,7 +2,7 @@ import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import AlertContainer from '../../components/AlertContainer/index';
-import alertService from '../../service/SingeltonController';
+import alertService from '../../service/SingletonController';
 
 export default {
     title: 'Notifications tester',
@@ -74,8 +74,7 @@ const Template = ({
                         visibleTime,
                         color,
                     });
-                }}
-            >
+                }}>
                 ADD ALERT
             </button>
             <AlertContainer />

@@ -4,7 +4,7 @@ const storiesArguments = {
     fadeAnimation: 'fade-out',
     visibleTime: 5000,
     indent: 'small',
-    visibleState: true,
+    alertVisibleState: true,
     animationDuration: 1500,
 };
 export default storiesArguments;

@@ -11,6 +11,7 @@ enum constants {
     OPACITY_NONE = 0,
     BEHIND_SCREEN = 9000,
     ON_SCREEN = 0,
+    SCREEN_OFFSET = 20,
 }
 
 export const TYPES = ['info', 'success', 'warning', 'error'];

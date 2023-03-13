@@ -32,7 +32,7 @@ export type Params = Pick<
     | 'indent'
     | 'color'
 > & {
-    visibleState: boolean;
+    alertVisibleState: boolean;
 };
 
 export interface Position {
