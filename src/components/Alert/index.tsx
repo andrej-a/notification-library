@@ -27,11 +27,11 @@ export const Alert: FC<IAlert> = ({
     color,
     animationDuration,
 }) => {
-    const [alertVisibleState, setVisibleState] = useState(true);
+    const [alertVisibleState, setAlertVisibleState] = useState(true);
 
     const componentManager = useCallback(
         (id: string) => () => {
-            setVisibleState(false);
+            setAlertVisibleState(false);
             setTimeout(() => {
                 alertService.removeAlert(id!);
             }, animationDuration - 20);
